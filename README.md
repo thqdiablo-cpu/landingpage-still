@@ -7,22 +7,21 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 - `proposta/index.html` → página de proposta (/proposta)
 - `404.html`, `favicon.svg`, `og.png`, `robots.txt`
 
-## Motion ao rolar (novidades em relação à referência)
-- **Barra de progresso** de leitura no topo.
-- **Hero**: título palavra por palavra; ao rolar, o conteúdo sobe e some e as manchas de cor fazem parallax.
-- **Faixa (marquee)** de serviços que anda sozinha e acelera conforme a velocidade da rolagem.
-- **Texto de destaque**: as palavras acendem uma a uma conforme a seção atravessa a tela.
-- **Títulos**: cada linha sobe por trás de uma máscara quando entra na tela.
-- **Projetos**: quadros em estilo desenho (traço a lápis) que se desenham ao entrar na tela; ao clicar, o quadro se expande e abre o projeto completo (desafio, solução, entregáveis e galeria), com navegação para o próximo projeto.
-  O conteúdo de cada projeto fica no objeto `CASES`, no script do `index.html`.
-- **Saída das seções**: ao deixar a tela, cada seção dá um pequeno pulo, encolhe e some; as entradas usam uma curva com leve quique.
-- **Serviços / Estúdio / FAQ**: entradas escalonadas (de lado, de baixo, com escala).
-- **Processo** (seção nova): linha vertical que preenche com a rolagem e acende cada etapa.
-- **CTA**: círculo decorativo gira com a rolagem; **rodapé**: letras de STILL sobem.
-- Menu destaca a seção ativa; respeita `prefers-reduced-motion` (tudo aparece sem animação).
+## Estrutura e motion
+Página clara com "cartões" escuros arredondados (abertura, serviços e chamada final).
+- **Abertura**: título palavra por palavra; ao fundo, "STILL" com rastro de movimento que se assenta (fica "parado") conforme a rolagem.
+- **Menu flutuante** aparece depois da abertura e destaca a seção atual; barra de progresso no topo.
+- **Clientes**: faixa de logos logo abaixo da abertura (ver "Logos de clientes e parceiros").
+- **Quem somos**: as palavras acendem uma a uma conforme a rolagem.
+- **Projetos**: a seção fica presa e os quadros (desenhos a lápis que se desenham sozinhos) andam na horizontal;
+  ao clicar, o quadro se expande e abre o projeto completo. O conteúdo de cada projeto fica no objeto `CASES`, no script.
+- **Em números**: os números contam até o valor final. Hoje mostram dados tirados do próprio conteúdo do site
+  (3 frentes, 4 etapas…); troque pelos números reais do estúdio (atributos `data-to` e `data-suf`).
+- **Serviços**: lista em bloco escuro; no computador, um desenho segue o cursor sobre cada serviço.
+- **Processo**: linha que preenche com a rolagem; **seções** saem com um pequeno pulo ao deixar a tela.
+- Respeita `prefers-reduced-motion` (tudo aparece sem animação).
 
-Para animar um novo elemento, basta adicionar `data-rv` (ou `data-rv="left|right|scale|blur|mask"`);
-para um título com linhas mascaradas, use `data-split`.
+Para animar um novo elemento, adicione `data-rv` (ou `data-rv="left|scale|blur"`); para um título com linhas mascaradas, use `data-split`.
 
 ## Publicar
 Funciona em qualquer hospedagem estática (Vercel, Netlify, Cloudflare Pages, GitHub Pages): envie a pasta inteira.
