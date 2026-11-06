@@ -11,9 +11,10 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 - **Barra de progresso** de leitura no topo.
 - **Hero**: título palavra por palavra; ao rolar, o conteúdo sobe e some e as manchas de cor fazem parallax.
 - **Faixa (marquee)** de serviços que anda sozinha e acelera conforme a velocidade da rolagem.
-- **Manifesto**: as palavras acendem uma a uma conforme a seção atravessa a tela.
+- **Texto de destaque**: as palavras acendem uma a uma conforme a seção atravessa a tela.
 - **Títulos**: cada linha sobe por trás de uma máscara quando entra na tela.
-- **Projetos**: imagens reveladas com máscara de baixo para cima + parallax dentro da moldura.
+- **Projetos**: quadros em estilo desenho (traço a lápis) que se desenham ao entrar na tela; ao clicar, o quadro vira e mostra as informações.
+- **Saída das seções**: ao deixar a tela, cada seção dá um pequeno pulo, encolhe e some; as entradas usam uma curva com leve quique.
 - **Serviços / Estúdio / FAQ**: entradas escalonadas (de lado, de baixo, com escala).
 - **Processo** (seção nova): linha vertical que preenche com a rolagem e acende cada etapa.
 - **CTA**: círculo decorativo gira com a rolagem; **rodapé**: letras de STILL sobem.

@@ -17,7 +17,7 @@
 :root{--bg:#0C1014;--card:#25292E;--alt:#181818;--ink:#FEFEFE;--muted:rgba(254,254,254,.66);--line:rgba(254,254,254,.14);--accent:#E53242;--on:#FEFEFE;
 --g1:#0C1014;--g2:#2B0E15;--g3:#6B1824;--g4:#1B1215;--glass:rgba(12,16,20,.55);color-scheme:dark;
 --d:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--b:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
---ease:cubic-bezier(.2,.8,.2,1);
+--ease:cubic-bezier(.2,.8,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);--paper:#EEECE8;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(4.5rem + env(safe-area-inset-top,0px))}
@@ -72,10 +72,6 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
 .hero .sub{max-width:46ch;margin:1.6rem auto 0;font-size:clamp(1.05rem,2vw,1.3rem);animation:fade .8s .75s both}
 .hero .acts{margin-top:2rem;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;animation:fade .8s .9s both}
 .btn.ghost{background:var(--glass);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line);backdrop-filter:blur(6px)}
-.scrl{position:absolute;left:50%;bottom:clamp(4.5rem,10vw,8rem);z-index:2;transform:translateX(-50%);display:grid;justify-items:center;gap:.5rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);animation:fade .8s 1.2s both;text-decoration:none}
-.scrl i{width:1.4rem;height:2.2rem;border:1.5px solid var(--muted);border-radius:1rem;position:relative}
-.scrl i::after{content:"";position:absolute;left:50%;top:.4rem;width:3px;height:.45rem;margin-left:-1.5px;border-radius:2px;background:var(--ink);animation:wheel 1.8s ease-in-out infinite}
-@keyframes wheel{0%{opacity:0;transform:translateY(-3px)}40%{opacity:1}100%{opacity:0;transform:translateY(9px)}}
 @keyframes up{from{transform:translateY(105%);opacity:0}to{transform:none;opacity:1}}
 @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .wv{position:absolute;left:0;right:0;bottom:-1px;height:clamp(60px,10vw,130px);overflow:hidden;z-index:1}
@@ -84,15 +80,15 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
 @keyframes wave{to{transform:translateX(-50%)}}
 
 /* faixa (marquee) que acompanha a rolagem */
-.mq{padding:1.4rem 0;overflow:hidden;border-block:1px solid var(--line)}
+.mq{padding:1.4rem 0;margin-bottom:clamp(1rem,4vw,3rem);overflow:hidden;border-block:1px solid var(--line)}
 .mq-t{display:flex;gap:2.4rem;width:max-content;white-space:nowrap;will-change:transform;font:800 clamp(1.6rem,4vw,3rem)/1 var(--d);letter-spacing:-.02em}
 .mq-t span{display:inline-flex;align-items:center;gap:2.4rem}
 .mq-t span::after{content:"✦";color:var(--accent);font-size:.6em}
 .mq-t .o{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
 
 /* manifesto: palavras acendem conforme a rolagem */
-.mf{padding:clamp(5rem,12vw,9rem) 0}
-.mf p{font:800 clamp(1.8rem,4.6vw,3.6rem)/1.12 var(--d);letter-spacing:-.025em;max-width:22ch}
+.mf{padding:clamp(4.5rem,11vw,8rem) 0}
+.mf p{font:800 clamp(2.3rem,6.4vw,5.2rem)/1.04 var(--d);letter-spacing:-.035em;max-width:18ch;text-wrap:balance}
 .js .mf .wo{opacity:.16;transition:opacity .25s,color .25s}
 .js .mf .wo.lit{opacity:1}
 .js .mf .wo.hl.lit{color:var(--accent)}
@@ -102,10 +98,36 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
 .head p{color:var(--muted);max-width:36ch}
 .pg{display:grid;gap:1.25rem;grid-template-columns:1fr}
 @media(min-width:700px){.pg{grid-template-columns:1fr 1fr}.pg .pc:nth-child(even){margin-top:4rem}}
-.pc{margin:0}.art{aspect-ratio:5/4;border-radius:22px;overflow:hidden;background:var(--card);position:relative}
-.art svg{display:block;position:absolute;left:0;top:-9%;width:100%;height:118%;transform:translateY(var(--py,0px));transition:scale .7s var(--ease)}
-.pc:hover .art svg{scale:1.06}
+.pc{margin:0;perspective:1400px}
+.flip{position:relative;aspect-ratio:5/4;max-width:100%;transform-style:preserve-3d;transition:transform 1s var(--spring)}
+.pc.open .flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:22px;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.front{display:block;width:100%;padding:0;border:0;cursor:pointer;color:var(--bg);font:inherit;text-align:left;
+ background:radial-gradient(circle,rgba(12,16,20,.13) 1px,transparent 1.2px) 0 0/18px 18px,var(--paper);box-shadow:inset 0 0 0 1px rgba(12,16,20,.08)}
+.front svg{display:block;width:100%;height:100%;transition:transform .7s var(--spring)}
+.front:hover svg{transform:scale(1.04) rotate(-.6deg)}
+.front .hint{position:absolute;right:1rem;bottom:1rem;display:inline-flex;align-items:center;gap:.45rem;background:var(--bg);color:var(--ink);font:600 .85rem var(--b);padding:.5rem .9rem;border-radius:999px;transition:background .25s,transform .25s var(--spring)}
+.front .hint b{font-size:1.1rem;line-height:1;color:var(--accent);transition:transform .35s var(--spring)}
+.front:hover .hint{transform:translateY(-3px)}.front:hover .hint b{transform:rotate(90deg)}
+.back{transform:rotateY(180deg);background:var(--card);padding:clamp(1.2rem,3.2vw,2rem);display:flex;flex-direction:column;gap:.7rem;overflow:auto}
+.back .cat{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.back h3{font-size:clamp(1.4rem,2.6vw,2rem);padding-right:2.5rem}
+.back p{color:var(--muted);max-width:44ch}
+.back .tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.back .tags span{font-size:.82rem;border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;color:var(--muted)}
+.back .go{margin-top:auto;align-self:flex-start;padding:.7rem 1.2rem;font-size:.92rem}
+.back .x{position:absolute;top:1rem;right:1rem;width:2.4rem;height:2.4rem;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer;transition:border-color .2s,transform .3s var(--spring)}
+.back .x:hover{border-color:var(--accent);transform:rotate(90deg)}
+@media(max-width:420px){.back p{font-size:.95rem}.back .tags{display:none}}
+/* traço de desenho: as linhas se desenham quando o quadro entra na tela */
+.sk{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.sk.r{stroke:var(--accent);stroke-width:5}.sk.t{stroke-width:1.4;opacity:.45}
+.hf{opacity:1}.nt{font:500 13px var(--b);fill:currentColor;opacity:.55}
+.js .sk{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s cubic-bezier(.5,0,.2,1) calc(.25s + var(--k,0)*.18s)}
+.js .hf,.js .nt{opacity:0;transition:opacity .8s ease calc(1.2s + var(--k,0)*.18s)}
+.js .pc.in .sk{stroke-dashoffset:0}.js .pc.in .hf{opacity:1}.js .pc.in .nt{opacity:.55}
 .pc figcaption{display:flex;justify-content:space-between;padding:.9rem .4rem 0;gap:1rem}.pc figcaption span{color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .note{text-align:center;color:var(--muted);margin-top:2rem;font-size:.95rem}
 
 /* serviços */
@@ -172,10 +194,10 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
 /* ===== MOTION AO ROLAR =====
    [data-rv] = tipo de entrada: up (padrão), left, right, scale, mask, blur
    As entradas disparam quando o elemento entra na tela; a ordem dentro do mesmo grupo é escalonada. */
-.js [data-rv]{opacity:0;transition:opacity .9s var(--ease) var(--dl,0s),transform .9s var(--ease) var(--dl,0s),clip-path 1.1s var(--ease) var(--dl,0s),filter .9s var(--ease) var(--dl,0s);transform:translateY(40px)}
+.js [data-rv]{opacity:0;transition:opacity .9s var(--ease) var(--dl,0s),transform 1s var(--spring) var(--dl,0s),clip-path 1.1s var(--ease) var(--dl,0s),filter .9s var(--ease) var(--dl,0s);transform:translateY(40px)}
 .js [data-rv=left]{transform:translateX(-60px)}
 .js [data-rv=right]{transform:translateX(60px)}
-.js [data-rv=scale]{transform:scale(.92) translateY(30px)}
+.js [data-rv=scale]{transform:scale(.86) translateY(50px)}
 .js [data-rv=blur]{transform:translateY(20px);filter:blur(12px)}
 .js [data-rv=mask]{opacity:1;transform:none;clip-path:inset(100% 0 0 0 round 22px)}
 .js [data-rv].in{opacity:1;transform:none;filter:none}
@@ -192,6 +214,7 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
  *,*::before,*::after{animation:none!important;transition:none!important}
  .js [data-rv],.js .ln>span,.js .big span{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
  .js .mf .wo{opacity:1}
+ .js .sk{stroke-dashoffset:0!important}.js .hf,.js .nt{opacity:1!important}
 }
 </style>
 </head>
@@ -212,30 +235,75 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
     <p class="sub">A STILL STUDIO conecta estratégia, criatividade e design para transformar ideias em experiências visuais relevantes.</p>
     <div class="acts"><a class="btn" href="/proposta">Solicitar proposta <span class="ar">→</span></a><a class="btn ghost" href="#projetos">Ver projetos</a></div>
   </div>
-  <a class="scrl" href="#manifesto" aria-label="Rolar para o conteúdo"><i></i>Role</a>
   <div class="wv" aria-hidden="true">
     <svg class="s2" viewBox="0 0 2880 140" preserveAspectRatio="none"><path d="M0 90 C240 30 480 150 720 90 C960 30 1200 150 1440 90 C1680 30 1920 150 2160 90 C2400 30 2640 150 2880 90 L2880 140 L0 140Z"/></svg>
     <svg viewBox="0 0 2880 140" preserveAspectRatio="none"><path d="M0 70 C240 10 480 130 720 70 C960 10 1200 130 1440 70 C1680 10 1920 130 2160 70 C2400 10 2640 130 2880 70 L2880 140 L0 140Z"/></svg>
   </div>
 </section>
 
+<section class="mf" id="manifesto"><div class="w">
+  <p id="mfText" data-hl="entendida,lembrada.">Uma marca bonita chama atenção. Uma marca bem pensada é entendida, escolhida e lembrada.</p>
+</div></section>
+
 <div class="mq" aria-hidden="true"><div class="mq-t" id="mq">
   <span>Branding</span><span class="o">Identidade visual</span><span>Social media</span><span class="o">Motion design</span><span>Direção de arte</span><span class="o">Projetos culturais</span>
   <span>Branding</span><span class="o">Identidade visual</span><span>Social media</span><span class="o">Motion design</span><span>Direção de arte</span><span class="o">Projetos culturais</span>
 </div></div>
 
-<section class="mf" id="manifesto"><div class="w">
-  <span class="eyebrow" data-rv>Manifesto</span>
-  <p id="mfText" data-hl="entendida,lembrada.">Uma marca bonita chama atenção. Uma marca bem pensada é entendida, escolhida e lembrada.</p>
-</div></section>
-
 <section id="projetos"><div class="w">
   <div class="head"><div><span class="eyebrow" data-rv>Portfólio</span><h2 data-split>Projetos selecionados<span class="dot">.</span></h2></div><p data-rv>Um recorte do que criamos para marcas, empresas e iniciativas culturais.</p></div>
   <div class="pg">
-    <figure class="pc"><div class="art" data-rv="mask"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="500" height="400" fill="#E53242"/><circle cx="190" cy="200" r="110" fill="#FEFEFE"/><circle cx="320" cy="200" r="110" fill="none" stroke="#0C1014" stroke-width="12"/></svg></div><figcaption data-rv><strong>Branding e identidade visual</strong><span>Marca</span></figcaption></figure>
-    <figure class="pc"><div class="art" data-rv="mask"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="500" height="400" fill="#181818"/><path d="M60 400 Q250 90 440 400Z" fill="#E53242"/><rect x="60" y="60" width="130" height="12" fill="#FEFEFE"/><rect x="60" y="86" width="86" height="12" fill="#FEFEFE"/></svg></div><figcaption data-rv><strong>Social media</strong><span>Direção de arte</span></figcaption></figure>
-    <figure class="pc"><div class="art" data-rv="mask"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="500" height="400" fill="#25292E"/><g fill="#E53242"><rect x="70" y="220" width="64" height="110"/><rect x="154" y="160" width="64" height="170"/><rect x="238" y="100" width="64" height="230"/></g><circle cx="390" cy="140" r="56" fill="#FEFEFE"/></svg></div><figcaption data-rv><strong>Motion design</strong><span>Animação</span></figcaption></figure>
-    <figure class="pc"><div class="art" data-rv="mask"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="500" height="400" fill="#FEFEFE"/><rect x="80" y="60" width="340" height="280" fill="none" stroke="#0C1014" stroke-width="8"/><rect x="115" y="95" width="160" height="210" fill="#E53242"/><rect x="300" y="95" width="85" height="80" fill="#0C1014"/></svg></div><figcaption data-rv><strong>Identidade para projetos culturais</strong><span>Cartaz</span></figcaption></figure>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="pencil" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3.5"/></filter>
+<pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#E53242" stroke-width="3"/></pattern>
+</defs></svg>
+    <figure class="pc" data-rv="scale"><div class="flip">
+      <button class="face front" type="button" aria-expanded="false" aria-controls="pb0"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true" filter="url(#pencil)"><g class="t"><path class="sk t" pathLength="1" d="M50 200H450M250 40V360M120 70L380 330M380 70L120 330"/></g>
+<circle class="sk" style="--k:1" pathLength="1" cx="250" cy="200" r="125"/>
+<circle class="sk t" style="--k:1" pathLength="1" cx="250" cy="200" r="72"/>
+<circle class="hf" cx="250" cy="200" r="72" fill="url(#hatch)" />
+<path class="sk r" style="--k:2" pathLength="1" stroke-width="16" d="M296 146C276 118 212 118 210 158C208 196 290 192 290 236C290 280 220 286 202 254"/>
+<path class="sk" style="--k:3" pathLength="1" d="M375 75l26-26M401 49l14 40M401 49l-40 14"/>
+<text class="nt" x="64" y="70">ø 250 · grid 8pt</text><text class="nt" x="64" y="372">símbolo v.03</text></svg><span class="hint">Ver projeto <b>+</b></span><span class="sr">: Branding e identidade visual</span></button>
+      <div class="face back" id="pb0" inert><button class="x" type="button" aria-label="Fechar detalhes">×</button><span class="cat">Marca</span><h3>Branding e identidade visual</h3><p>Construção de marca do conceito ao sistema visual: símbolo, tipografia, cores e regras de uso.</p><div class="tags"><span>Logotipo</span><span>Paleta</span><span>Tipografia</span><span>Manual de marca</span></div><a class="btn red go" href="/proposta">Quero algo assim <span class="ar">→</span></a></div>
+    </div><figcaption><strong>Branding e identidade visual</strong><span>Marca</span></figcaption></figure>
+    <figure class="pc" data-rv="scale"><div class="flip">
+      <button class="face front" type="button" aria-expanded="false" aria-controls="pb1"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true" filter="url(#pencil)"><rect class="sk" pathLength="1" x="172" y="36" width="156" height="328" rx="26"/>
+<path class="sk" style="--k:1" pathLength="1" d="M230 58H270"/>
+<path class="sk" style="--k:2" pathLength="1" d="M190 100h36v36h-36zM232 100h36v36h-36zM274 100h36v36h-36zM190 142h36v36h-36zM232 142h36v36h-36zM274 142h36v36h-36zM190 184h36v36h-36zM232 184h36v36h-36zM274 184h36v36h-36z"/>
+<rect class="hf" x="232" y="142" width="36" height="36" fill="url(#hatch)"/>
+<path class="sk t" style="--k:3" pathLength="1" d="M190 250H310M190 272H280M190 294H296"/>
+<path class="sk r" style="--k:3" pathLength="1" d="M392 150c-22-16-40-30-40-48 0-14 10-22 21-22 9 0 15 6 19 12 4-6 10-12 19-12 11 0 21 8 21 22 0 18-18 32-40 48z"/>
+<path class="sk" style="--k:4" pathLength="1" d="M58 236c0-22 18-36 44-36s44 14 44 36-18 36-44 36c-6 0-12-1-17-3l-21 13 5-20c-7-7-11-16-11-26z"/>
+<text class="nt" x="352" y="186">+ 1,2 mil</text><text class="nt" x="64" y="306">comentários</text></svg><span class="hint">Ver projeto <b>+</b></span><span class="sr">: Social media</span></button>
+      <div class="face back" id="pb1" inert><button class="x" type="button" aria-label="Fechar detalhes">×</button><span class="cat">Direção de arte</span><h3>Social media</h3><p>Linha visual para redes, com templates e direção de arte que mantêm o feed consistente.</p><div class="tags"><span>Templates</span><span>Feed</span><span>Campanhas</span><span>Stories</span></div><a class="btn red go" href="/proposta">Quero algo assim <span class="ar">→</span></a></div>
+    </div><figcaption><strong>Social media</strong><span>Direção de arte</span></figcaption></figure>
+    <figure class="pc" data-rv="scale"><div class="flip">
+      <button class="face front" type="button" aria-expanded="false" aria-controls="pb2"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true" filter="url(#pencil)"><path class="sk" pathLength="1" d="M48 318H452"/>
+<path class="sk t" style="--k:1" pathLength="1" stroke-dasharray="6 8" d="M78 96Q128 96 156 306Q206 160 256 306Q292 214 330 306Q358 262 392 306"/>
+<circle class="sk r" style="--k:2" pathLength="1" cx="78" cy="96" r="24"/>
+<circle class="hf" cx="78" cy="96" r="24" fill="url(#hatch)"/>
+<ellipse class="sk" style="--k:3" pathLength="1" cx="156" cy="306" rx="31" ry="12"/>
+<circle class="sk t" style="--k:3" pathLength="1" cx="206" cy="186" r="20"/>
+<ellipse class="sk" style="--k:4" pathLength="1" cx="256" cy="307" rx="27" ry="11"/>
+<circle class="sk r" style="--k:5" pathLength="1" cx="420" cy="294" r="22"/>
+<path class="sk" style="--k:5" pathLength="1" d="M60 362H440M78 354l8 8-8 8-8-8zM156 354l8 8-8 8-8-8zM256 354l8 8-8 8-8-8zM330 354l8 8-8 8-8-8zM420 354l8 8-8 8-8-8z"/>
+<text class="nt" x="104" y="74">ease out · 24 fps</text></svg><span class="hint">Ver projeto <b>+</b></span><span class="sr">: Motion design</span></button>
+      <div class="face back" id="pb2" inert><button class="x" type="button" aria-label="Fechar detalhes">×</button><span class="cat">Animação</span><h3>Motion design</h3><p>Animações que dão ritmo à marca, de vinhetas e logos animados a peças para reels.</p><div class="tags"><span>Logo animado</span><span>Vinhetas</span><span>Reels</span></div><a class="btn red go" href="/proposta">Quero algo assim <span class="ar">→</span></a></div>
+    </div><figcaption><strong>Motion design</strong><span>Animação</span></figcaption></figure>
+    <figure class="pc" data-rv="scale"><div class="flip">
+      <button class="face front" type="button" aria-expanded="false" aria-controls="pb3"><svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true" filter="url(#pencil)"><g transform="rotate(-3 250 200)">
+<rect class="sk" pathLength="1" x="140" y="46" width="220" height="300" rx="3"/>
+<circle class="sk r" style="--k:1" pathLength="1" cx="250" cy="148" r="62"/>
+<circle class="hf" cx="250" cy="148" r="62" fill="url(#hatch)"/>
+<path class="sk" style="--k:2" pathLength="1" stroke-width="9" d="M166 248H334"/>
+<path class="sk" style="--k:3" pathLength="1" d="M166 276H300M166 298H270M166 320H318"/>
+<path class="sk t" style="--k:1" pathLength="1" stroke-width="10" d="M120 56l52-22M328 34l52 22"/>
+</g>
+<path class="sk r" style="--k:4" pathLength="1" d="M410 96v36M392 114h36M397 101l26 26M423 101l-26 26"/>
+<text class="nt" x="60" y="380">50 × 70 cm · serigrafia</text></svg><span class="hint">Ver projeto <b>+</b></span><span class="sr">: Identidade para projetos culturais</span></button>
+      <div class="face back" id="pb3" inert><button class="x" type="button" aria-label="Fechar detalhes">×</button><span class="cat">Cartaz</span><h3>Identidade para projetos culturais</h3><p>Identidades para eventos, exposições e festivais, do cartaz às peças digitais.</p><div class="tags"><span>Cartaz</span><span>Key visual</span><span>Peças digitais</span></div><a class="btn red go" href="/proposta">Quero algo assim <span class="ar">→</span></a></div>
+    </div><figcaption><strong>Identidade para projetos culturais</strong><span>Cartaz</span></figcaption></figure>
   </div>
   <p class="note" data-rv>Cases completos em atualização.</p>
 </div></section>
@@ -348,8 +416,8 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
 
  /* 4. Efeitos ligados diretamente à rolagem (rAF) */
  var nav=document.querySelector(".nav"),prog=document.querySelector(".prog"),hero=document.querySelector(".hero"),heroIn=document.getElementById("heroIn"),
-     blobs=$("[data-par]"),mq=document.getElementById("mq"),arts=$(".art svg"),steps=document.getElementById("steps"),stepLis=steps?$("li",steps):[],cb=document.getElementById("cb"),
-     links=$(".links a"),secs=links.map(function(a){return document.querySelector(a.getAttribute("href"))});
+     blobs=$("[data-par]"),mq=document.getElementById("mq"),steps=document.getElementById("steps"),stepLis=steps?$("li",steps):[],cb=document.getElementById("cb"),
+     links=$(".links a"),exits=$("main>section:not(.hero)>.w,main>.mq>.mq-t").filter(function(e){return e.id!=="mq"}),secs=links.map(function(a){return document.querySelector(a.getAttribute("href"))});
  var mqX=0,lastY=scrollY,vel=0,ticking=false;
 
  function frame(){
@@ -367,8 +435,10 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
    blobs.forEach(function(b){b.style.transform="translateY("+(y*parseFloat(b.dataset.par))+"px)"})}
   /* manifesto: palavras acendem do início ao fim conforme a seção atravessa a tela */
   if(mfw.length){var r=mf.getBoundingClientRect(),pr=Math.min(1,Math.max(0,(vh*.85-r.top)/(r.height+vh*.35)));var lit=Math.round(pr*mfw.length);mfw.forEach(function(w,i){w.classList.toggle("lit",i<lit)})}
-  /* imagens dos projetos em parallax dentro da moldura */
-  arts.forEach(function(s){var r=s.parentNode.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var c=(r.top+r.height/2-vh/2)/vh;s.style.setProperty("--py",(c*-36)+"px")});
+  /* seções saem "pulando": ao deixar a tela, sobem, encolhem e somem */
+  exits.forEach(function(el){var r=el.parentNode.getBoundingClientRect(),q=Math.min(1,Math.max(0,1-r.bottom/(vh*.6)));
+   if(q<=0){if(el._q){el.style.transform="";el.style.opacity="";el._q=0}return}
+   el._q=q;var hop=Math.sin(q*Math.PI)*-18;el.style.transform="translateY("+(hop-q*70)+"px) scale("+(1-q*.12)+") rotate("+(q*-1.2)+"deg)";el.style.opacity=1-q})
   /* processo: linha preenche e marca as etapas */
   if(steps){var sr=steps.getBoundingClientRect(),f=Math.min(1,Math.max(0,(vh*.6-sr.top)/sr.height));steps.style.setProperty("--f",f);
    stepLis.forEach(function(li){li.classList.toggle("on",li.getBoundingClientRect().top<vh*.6)})}
@@ -382,7 +452,16 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
  /* a faixa anda sozinha e acelera com a velocidade da rolagem */
  if(!reduce&&mq){(function loop(){var y=scrollY;vel+=((y-lastY)-vel)*.2;lastY=y;mqX-=0.6+Math.min(Math.abs(vel),60)*.35;var half=mq.scrollWidth/2;if(-mqX>=half)mqX+=half;mq.style.transform="translate3d("+mqX+"px,0,0)";requestAnimationFrame(loop)})()}
 
- /* 5. FAQ com abertura animada */
+ /* 5. Portfólio: clicar no desenho vira o quadro e mostra as informações */
+ $(".pc").forEach(function(pc){
+  var fr=pc.querySelector(".front"),bk=pc.querySelector(".back"),x=pc.querySelector(".x");
+  function set(o){pc.classList.toggle("open",o);fr.setAttribute("aria-expanded",o);bk.inert=!o;fr.inert=o;(o?x:fr).focus({preventScroll:true})}
+  fr.addEventListener("click",function(){set(true)});
+  x.addEventListener("click",function(){set(false)});
+  pc.addEventListener("keydown",function(e){if(e.key==="Escape"&&pc.classList.contains("open"))set(false)});
+ });
+
+ /* 6. FAQ com abertura animada */
  $("details").forEach(function(d){
   var s=d.querySelector("summary"),c=d.querySelector("p");
   s.addEventListener("click",function(e){
