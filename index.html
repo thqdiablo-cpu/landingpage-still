@@ -80,11 +80,18 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
 @keyframes wave{to{transform:translateX(-50%)}}
 
 /* faixa (marquee) que acompanha a rolagem */
-.mq{padding:1.4rem 0;margin-bottom:clamp(1rem,4vw,3rem);overflow:hidden;border-block:1px solid var(--line)}
-.mq-t{display:flex;gap:2.4rem;width:max-content;white-space:nowrap;will-change:transform;font:800 clamp(1.6rem,4vw,3rem)/1 var(--d);letter-spacing:-.02em}
-.mq-t span{display:inline-flex;align-items:center;gap:2.4rem}
-.mq-t span::after{content:"✦";color:var(--accent);font-size:.6em}
-.mq-t .o{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+/* clientes: faixa de logos que anda sozinha e acelera com a rolagem */
+.cl{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.cl-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem 2rem;margin-bottom:clamp(1.6rem,4vw,2.6rem)}
+.cl-h h2{font-size:clamp(1.8rem,4vw,3rem);max-width:18ch}
+.cl-h p{color:var(--muted);max-width:34ch}
+.mq{overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(1.2rem,3vw,2rem);
+ -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mq-t{display:flex;gap:clamp(1rem,3vw,2rem);width:max-content;will-change:transform}
+.lg{flex:none;display:grid;place-items:center;width:clamp(9rem,18vw,13rem);height:clamp(4.2rem,8vw,5.6rem);padding:.8rem 1.2rem;border-radius:16px;background:var(--card);transition:background .3s,transform .4s var(--spring)}
+.lg img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1) brightness(1.6);opacity:.75;transition:filter .3s,opacity .3s}
+.lg:hover{transform:translateY(-4px)}.lg:hover img{filter:none;opacity:1}
+.lg.ph{background:transparent;border:1.5px dashed var(--line);color:var(--muted);font:600 .85rem var(--b);letter-spacing:.08em;text-transform:uppercase}
 
 /* manifesto: palavras acendem conforme a rolagem */
 .mf{padding:clamp(4.5rem,11vw,8rem) 0}
@@ -266,10 +273,15 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
   <p id="mfText" data-hl="entendida,lembrada.">Uma marca bonita chama atenção. Uma marca bem pensada é entendida, escolhida e lembrada.</p>
 </div></section>
 
-<div class="mq" aria-hidden="true"><div class="mq-t" id="mq">
-  <span>Branding</span><span class="o">Identidade visual</span><span>Social media</span><span class="o">Motion design</span><span>Direção de arte</span><span class="o">Projetos culturais</span>
-  <span>Branding</span><span class="o">Identidade visual</span><span>Social media</span><span class="o">Motion design</span><span>Direção de arte</span><span class="o">Projetos culturais</span>
-</div></div>
+<section class="cl" id="clientes" aria-labelledby="clTitle">
+  <div class="w cl-h"><div><span class="eyebrow" data-rv>Clientes e parceiros</span><h2 id="clTitle" data-split>Veja com quem já fizemos projetos<span class="dot">.</span></h2></div><p data-rv>Marcas, empresas e projetos culturais que já criaram com a STILL.</p></div>
+  <!-- LOGOS: troque cada <span class="lg ph">Logo NN</span> por
+       <span class="lg"><img src="logos/nome-do-cliente.svg" alt="Nome do cliente"></span>
+       (a lista é duplicada automaticamente para a faixa girar sem emenda) -->
+  <div class="mq"><div class="mq-t" id="mq" role="list">
+    <span class="lg ph">Logo 01</span><span class="lg ph">Logo 02</span><span class="lg ph">Logo 03</span><span class="lg ph">Logo 04</span><span class="lg ph">Logo 05</span><span class="lg ph">Logo 06</span><span class="lg ph">Logo 07</span><span class="lg ph">Logo 08</span>
+  </div></div>
+</section>
 
 <section id="projetos"><div class="w">
   <div class="head"><div><span class="eyebrow" data-rv>Portfólio</span><h2 data-split>Projetos selecionados<span class="dot">.</span></h2></div><p data-rv>Um recorte do que criamos para marcas, empresas e iniciativas culturais.</p></div>
@@ -439,7 +451,7 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
  /* 4. Efeitos ligados diretamente à rolagem (rAF) */
  var nav=document.querySelector(".nav"),prog=document.querySelector(".prog"),hero=document.querySelector(".hero"),heroIn=document.getElementById("heroIn"),
      blobs=$("[data-par]"),mq=document.getElementById("mq"),steps=document.getElementById("steps"),stepLis=steps?$("li",steps):[],cb=document.getElementById("cb"),
-     links=$(".links a"),exits=$("main>section:not(.hero)>.w,main>.mq>.mq-t").filter(function(e){return e.id!=="mq"}),secs=links.map(function(a){return document.querySelector(a.getAttribute("href"))});
+     links=$(".links a"),exits=$("main>section:not(.hero)>.w"),secs=links.map(function(a){return document.querySelector(a.getAttribute("href"))});
  var mqX=0,lastY=scrollY,vel=0,ticking=false;
 
  function frame(){
@@ -472,7 +484,11 @@ details p{color:var(--muted);margin-top:.8rem;max-width:56ch}
  addEventListener("resize",onScroll);
  frame();
  /* a faixa anda sozinha e acelera com a velocidade da rolagem */
- if(!reduce&&mq){(function loop(){var y=scrollY;vel+=((y-lastY)-vel)*.2;lastY=y;mqX-=0.6+Math.min(Math.abs(vel),60)*.35;var half=mq.scrollWidth/2;if(-mqX>=half)mqX+=half;mq.style.transform="translate3d("+mqX+"px,0,0)";requestAnimationFrame(loop)})()}
+ /* duplica a lista de logos para a faixa girar sem emenda; pausa com o mouse em cima */
+ var mqHover=false;
+ if(mq){$(".lg",mq).forEach(function(l){l.setAttribute("role","listitem");var c=l.cloneNode(true);c.setAttribute("aria-hidden","true");c.removeAttribute("role");mq.appendChild(c)});
+  mq.addEventListener("mouseenter",function(){mqHover=true});mq.addEventListener("mouseleave",function(){mqHover=false})}
+ if(!reduce&&mq){(function loop(){if(mqHover){lastY=scrollY;requestAnimationFrame(loop);return}var y=scrollY;vel+=((y-lastY)-vel)*.2;lastY=y;mqX-=0.6+Math.min(Math.abs(vel),60)*.35;var half=(mq.scrollWidth+(parseFloat(getComputedStyle(mq).columnGap)||0))/2;if(-mqX>=half)mqX+=half;mq.style.transform="translate3d("+mqX+"px,0,0)";requestAnimationFrame(loop)})()}
 
  /* 5. Portfólio: clicar no quadro expande o projeto completo */
  var PAPER=function(svg,vb){return '<div class="paper"><svg viewBox="'+(vb||"0 0 400 300")+'" aria-hidden="true" filter="url(#pencil)">'+svg+'</svg></div>'};

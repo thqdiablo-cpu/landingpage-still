@@ -32,3 +32,11 @@ Funciona em qualquer hospedagem estática (Vercel, Netlify, Cloudflare Pages, Gi
    com a URL do serviço que recebe POST em JSON (Formspree, Google Apps Script, Make, Zapier, backend próprio).
 2. Pré-visualização em redes sociais: em `index.html` e `proposta/index.html`, troque
    `content="/og.png"` pela URL completa, ex.: `content="https://seudominio.com.br/og.png"`.
+
+## Logos de clientes e parceiros
+A faixa "Veja com quem já fizemos projetos" (seção `#clientes` no `index.html`) está com 8 espaços reservados.
+1. Coloque os arquivos na pasta `logos/` (de preferência SVG ou PNG com fundo transparente).
+2. No `index.html`, troque cada `<span class="lg ph">Logo 01</span>` por
+   `<span class="lg"><img src="logos/nome-do-cliente.svg" alt="Nome do cliente"></span>`.
+Pode ter quantos logos quiser: a lista é duplicada automaticamente para a faixa girar sem emenda.
+Os logos aparecem em tons de cinza e ganham a cor original ao passar o mouse; a faixa pausa com o mouse em cima.
