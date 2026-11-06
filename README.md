@@ -23,6 +23,12 @@ Página clara com "cartões" escuros arredondados (abertura, serviços e chamada
 
 Para animar um novo elemento, adicione `data-rv` (ou `data-rv="left|scale|blur"`); para um título com linhas mascaradas, use `data-split`.
 
+## Versão B (teste)
+`versao-b/index.html` (/versao-b) é uma alternativa no formato de página de conversão: faixas escuras granuladas
+alternando com faixas claras, títulos pesados em caixa alta, selos inclinados, faixas de texto correndo,
+cartões de "frentes" no estilo de planos, carrossel do portfólio (abre o projeto completo), FAQ e barra fixa
+de proposta no rodapé. Está marcada com `noindex` enquanto for teste.
+
 ## Publicar
 Funciona em qualquer hospedagem estática (Vercel, Netlify, Cloudflare Pages, GitHub Pages): envie a pasta inteira.
 
