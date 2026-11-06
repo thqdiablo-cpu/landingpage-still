@@ -13,7 +13,8 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 - **Faixa (marquee)** de serviços que anda sozinha e acelera conforme a velocidade da rolagem.
 - **Texto de destaque**: as palavras acendem uma a uma conforme a seção atravessa a tela.
 - **Títulos**: cada linha sobe por trás de uma máscara quando entra na tela.
-- **Projetos**: quadros em estilo desenho (traço a lápis) que se desenham ao entrar na tela; ao clicar, o quadro vira e mostra as informações.
+- **Projetos**: quadros em estilo desenho (traço a lápis) que se desenham ao entrar na tela; ao clicar, o quadro se expande e abre o projeto completo (desafio, solução, entregáveis e galeria), com navegação para o próximo projeto.
+  O conteúdo de cada projeto fica no objeto `CASES`, no script do `index.html`.
 - **Saída das seções**: ao deixar a tela, cada seção dá um pequeno pulo, encolhe e some; as entradas usam uma curva com leve quique.
 - **Serviços / Estúdio / FAQ**: entradas escalonadas (de lado, de baixo, com escala).
 - **Processo** (seção nova): linha vertical que preenche com a rolagem e acende cada etapa.
