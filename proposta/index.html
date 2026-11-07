@@ -183,6 +183,9 @@ var FORM_ENDPOINT="";
   desafio:function(v){return v.length>=20||"Descreva o projeto com pelo menos 20 caracteres."}
  };
  var BY=[["nome","email","whats"],["empresa","porte","oferta"],["servico","prazo","origem","desafio"]];
+ /* serviço vindo da home (?servico=branding|social|motion|outro) já marcado */
+ try{var SV={branding:"Branding e identidade visual",social:"Social media",motion:"Motion design",outro:"Outro / ainda não sei"},qs=new URLSearchParams(location.search).get("servico");
+  if(qs&&SV[qs]){var cb=f.querySelector('[name=servico][value="'+SV[qs]+'"]');if(cb)cb.checked=true}}catch(e){}
  function setErr(n,m){var e=document.getElementById("e-"+n),el=f.elements[n];if(e)e.textContent=m||"";var els=n==="servico"?[]:[el];els.forEach(function(x){if(!x)return;x.classList.toggle("bad",!!m);x.setAttribute("aria-invalid",m?"true":"false");if(m)x.setAttribute("aria-describedby","e-"+n)})}
  function check(n){var m;
   if(n==="servico"){m=f.querySelectorAll('[name=servico]:checked').length?"":"Escolha pelo menos um serviço."}

@@ -7,41 +7,26 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 - `proposta/index.html` → página de proposta (/proposta)
 - `404.html`, `favicon.svg`, `og.png`, `robots.txt`
 
-## Estrutura e motion
-Página clara com "cartões" escuros arredondados (abertura, serviços e chamada final).
-- **Abertura**: título palavra por palavra; ao fundo, "STILL" com rastro de movimento que se assenta (fica "parado") conforme a rolagem.
-- **Menu flutuante** aparece depois da abertura e destaca a seção atual; barra de progresso no topo.
-- **Clientes**: faixa de logos logo abaixo da abertura (ver "Logos de clientes e parceiros").
-- **Quem somos**: as palavras acendem uma a uma conforme a rolagem.
-- **Projetos**: a seção fica presa e os quadros (desenhos a lápis que se desenham sozinhos) andam na horizontal;
-  ao clicar, o quadro se expande e abre o projeto completo. O conteúdo de cada projeto fica no objeto `CASES`, no script.
-- **Em números**: os números contam até o valor final. Hoje mostram dados tirados do próprio conteúdo do site
-  (3 frentes, 4 etapas…); troque pelos números reais do estúdio (atributos `data-to` e `data-suf`).
-- **Serviços**: lista em bloco escuro; no computador, um desenho segue o cursor sobre cada serviço.
-- **Processo**: linha que preenche com a rolagem; **seções** saem com um pequeno pulo ao deixar a tela.
-- Respeita `prefers-reduced-motion` (tudo aparece sem animação).
+## Estrutura e motion (home)
+1. **Abertura**: só o logo (quadrado, círculo e U) e as cores da marca. As formas entram separadas, o fundo
+   troca de preto para vermelho, para claro e volta ao preto, e as formas brincam (giram, quicam, se afastam).
+   Ciclo de 12 s; no computador o logo segue levemente o cursor. Arquivo do logo em `logo/Logo_Still.pdf`.
+2. **Quem somos**: palavras acendem conforme a rolagem; link para "Nossa história".
+3. **Em números**: contam até o valor final (troque pelos dados reais: `data-to` e `data-suf`).
+4. **Portfólio**: "Se ainda não viu, venha ver!" + link "Portfólio completo" (troque o `href` pelo link real)
+   e 10 cases que andam para o lado enquanto a seção fica presa. Cada quadro abre o projeto completo;
+   o conteúdo fica no objeto `CASES` no script (os 10 cases atuais são exemplos para trocar pelos reais).
+5. **Bora criar um projeto juntos?**: chamada com botão circular girando.
+6. **Serviços**: palavras grandes que andam para o lado com a rolagem; cada uma abre a proposta com o serviço marcado.
+7. **Vamos conversar**: formas do logo seguem o cursor, a palavra final troca sozinha, a pessoa escolhe o serviço
+   e o botão leva para `/proposta?servico=...`, que já abre o formulário com o serviço marcado.
+8. **Rodapé**: logo grande que se monta ao aparecer.
 
-Para animar um novo elemento, adicione `data-rv` (ou `data-rv="left|scale|blur"`); para um título com linhas mascaradas, use `data-split`.
-
-## Versão B (teste)
-`versao-b/index.html` (/versao-b) é uma alternativa no formato de página de conversão: faixas escuras granuladas
-alternando com faixas claras, títulos pesados em caixa alta, selos inclinados, faixas de texto correndo,
-cartões de "frentes" no estilo de planos, carrossel do portfólio (abre o projeto completo), FAQ e barra fixa
-de proposta no rodapé. Está marcada com `noindex` enquanto for teste.
-
-## Publicar
-Funciona em qualquer hospedagem estática (Vercel, Netlify, Cloudflare Pages, GitHub Pages): envie a pasta inteira.
-
-## ANTES de divulgar (2 itens obrigatórios)
-1. Receber as propostas: em `proposta/index.html`, preencha `FORM_ENDPOINT` (perto do fim do arquivo)
-   com a URL do serviço que recebe POST em JSON (Formspree, Google Apps Script, Make, Zapier, backend próprio).
-2. Pré-visualização em redes sociais: em `index.html` e `proposta/index.html`, troque
-   `content="/og.png"` pela URL completa, ex.: `content="https://seudominio.com.br/og.png"`.
+Página **Nossa história** em `historia/index.html` (/historia): "Quem faz parte da nossa história", com a grade de logos.
 
 ## Logos de clientes e parceiros
-A faixa "Veja com quem já fizemos projetos" (seção `#clientes` no `index.html`) está com 8 espaços reservados.
+Ficam na página `historia/index.html`, com 12 espaços reservados.
 1. Coloque os arquivos na pasta `logos/` (de preferência SVG ou PNG com fundo transparente).
-2. No `index.html`, troque cada `<span class="lg ph">Logo 01</span>` por
-   `<span class="lg"><img src="logos/nome-do-cliente.svg" alt="Nome do cliente"></span>`.
-Pode ter quantos logos quiser: a lista é duplicada automaticamente para a faixa girar sem emenda.
-Os logos aparecem em tons de cinza e ganham a cor original ao passar o mouse; a faixa pausa com o mouse em cima.
+2. Troque cada `<div class="lg ph" data-rv>Logo 01</div>` por
+   `<div class="lg" data-rv><img src="/logos/nome-do-cliente.svg" alt="Nome do cliente"></div>`.
+Os logos aparecem em tons de cinza e ganham a cor original ao passar o mouse.
