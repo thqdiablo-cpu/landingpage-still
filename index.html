@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Things I Didn't Do | TTIDD</title>
+  <meta name="description" content="The Things I Didn't Do — a Kling Brothers series. A psychological thriller about Ethan, a teenager whose darkest fantasies start coming true. Coming soon.">
+  <meta property="og:title" content="The Things I Didn't Do | TTIDD">
+  <meta property="og:description" content="A Kling Brothers series. Coming soon.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ttiddtv.com">
+  <meta property="og:image" content="assets/img/heroposter.webp">
+  <meta name="theme-color" content="#01050f">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/logo.webp">
+  <link rel="preload" as="image" href="assets/img/heroposter.webp">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    // Hide animated elements only when JS runs; a safety timer reveals everything
+    // if the animation libraries fail to load.
+    document.documentElement.classList.add('js');
+    window.__ttiddFallback = setTimeout(function () {
+      document.documentElement.classList.remove('js');
+      document.documentElement.classList.add('no-anim');
+    }, 6000);
+  </script>
+</head>
+<body>
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__panel preloader__panel--top"></div>
+    <div class="preloader__panel preloader__panel--bottom"></div>
+    <div class="preloader__inner">
+      <img class="preloader__logo" src="assets/img/logo.webp" alt="" width="700" height="269">
+      <div class="preloader__bar"><span></span></div>
+      <p class="preloader__count"><span>0</span>%</p>
+    </div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header__inner container">
+      <a href="#top" class="header__soon" aria-label="Coming soon">
+        <img src="assets/img/poppy1.webp" alt="Coming soon" width="600" height="66">
+      </a>
+      <a href="#top" class="header__logo" aria-label="The Things I Didn't Do — home">
+        <img src="assets/img/logo.webp" alt="The Things I Didn't Do" width="700" height="269">
+      </a>
+      <nav class="nav" aria-label="Main">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav__toggle-label">Menu</span>
+          <span class="nav__burger"><i></i><i></i></span>
+        </button>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#cast">Cast</a></li>
+          <li><a href="#crew">Crew</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="The Things I Didn't Do">
+      <div class="hero__media">
+        <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/img/heroposter.webp" aria-hidden="true">
+          <source src="assets/video/hero-loop.mp4" type="video/mp4">
+        </video>
+        <div class="hero__shade"></div>
+      </div>
+
+      <div class="hero__content container">
+        <p class="hero__eyebrow" data-hero="eyebrow">A Kling Brothers series</p>
+        <h1 class="hero__title">
+          <span class="sr-only">The Things I Didn't Do</span>
+          <img src="assets/img/icone.webp" alt="" width="600" height="270" data-hero="title">
+        </h1>
+        <div class="hero__actions" data-hero="actions">
+          <button class="btn btn--play" data-trailer>
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </span>
+            <span>Trailer</span>
+          </button>
+          <button class="btn btn--gold" data-trailer>Watch trailer</button>
+        </div>
+      </div>
+
+      <a href="#about" class="hero__scroll" data-hero="scroll" aria-label="Scroll to About">
+        <span>Scroll</span><i></i>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about section" id="about">
+      <div class="about__bg parallax-bg" aria-hidden="true">
+        <img src="assets/img/aboutbg.webp" alt="" loading="lazy" data-speed="0.15">
+      </div>
+      <div class="container about__grid">
+        <div class="about__text">
+          <p class="kicker" data-reveal>About TTIDD</p>
+          <h2 class="title-hand" data-split>A notebook. A list.<br>And then, the bodies.</h2>
+          <div class="about__body" data-reveal-group>
+            <p>Ethan, a damaged teenager with a dark imagination, lives in the shadow of the school’s bad boys, always trying to prove his worth but never quite brave enough to do anything truly wrong. To vent, he keeps a secret notebook where he draws and writes, in a macabre way, how he would get rid of the people around him who don’t value him the way he wishes they would.</p>
+            <p>One day, he loses the notebook in a coffee shop and recovers it the next day. Relieved, he thinks everything is fine — until the people he “killed” in his fantasies begin turning up dead exactly as he imagined. As the police investigate, Ethan grows increasingly panicked, unsure of what to do.</p>
+          </div>
+        </div>
+
+        <aside class="credits" data-reveal="card">
+          <img class="credits__logo" src="assets/img/icone.webp" alt="The Things I Didn't Do" width="600" height="270" loading="lazy">
+          <dl class="credits__list" data-reveal-group>
+            <div><dt>Directed by</dt><dd>Fernando Tosetti</dd></div>
+            <div><dt>Created by</dt><dd>Thiago Kling</dd></div>
+            <div><dt>Screenwriters</dt><dd>Thiago Kling and Julia Antuerpen</dd></div>
+            <div><dt>Cast</dt><dd>Jacob Stutchman, Taylor Marie Hutchison, Julia Ros, Jacob Dorsett, Zipporah Mainville, Colin Mcdermott, Fransiscus Fendrian, Christopher Sheeran, Alex P. Jackson, David A. Clark, Kevin Anthony, Nikki Marrow, Suzanne O'Donnell</dd></div>
+            <div><dt>Genre</dt><dd>Suspense</dd></div>
+          </dl>
+          <div class="credits__rating" data-reveal>
+            <img src="assets/img/poppy2.webp" alt="Rated 16" width="120" height="120" loading="lazy">
+            <span>Violence and drugs<br><small>Not recommended for children under 16 years of age.</small></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ QUESTION (scroll-scrubbed text) ============ -->
+    <section class="question section" aria-label="The question">
+      <div class="container">
+        <p class="question__text" data-scrub-words>Who is behind the murders? A stranger who found the notebook? His friends? Or Ethan’s own imagination, which may have gone too far?</p>
+      </div>
+    </section>
+
+    <!-- ============ TOPICS ============ -->
+    <section class="topics section" id="topics">
+      <div class="topics__bg parallax-bg" aria-hidden="true">
+        <img src="assets/img/topicsbg.webp" alt="" loading="lazy" data-speed="0.2">
+      </div>
+      <div class="container topics__grid">
+        <div class="topics__intro">
+          <p class="kicker" data-reveal>Themes</p>
+          <h2 class="title-hand" data-split>Topics Covered</h2>
+          <p data-reveal>The narrative is a dense psychological thriller that subverts the hero's journey, transforming imagination — usually seen as a gift — into a lethal weapon. Through Ethan's journey, the series discusses the alienation of contemporary youth, the fragility of mental health, and the irreversible impact of our inner shadows. It's a story about the moment when the mask of normalcy falls and we are forced to confront what we have cultivated in the dark.</p>
+        </div>
+        <ul class="topics__list" data-stagger>
+          <li class="topic">
+            <span class="topic__num">01</span>
+            <img src="assets/img/icon1.webp" alt="" width="260" height="201" loading="lazy">
+            <h3>The Abyss of Fantasy</h3>
+          </li>
+          <li class="topic">
+            <span class="topic__num">02</span>
+            <img src="assets/img/icon3.webp" alt="" width="260" height="303" loading="lazy">
+            <h3>The Architecture of Invisibility</h3>
+          </li>
+          <li class="topic">
+            <span class="topic__num">03</span>
+            <img src="assets/img/icon2.webp" alt="" width="260" height="330" loading="lazy">
+            <h3>The Weight of Silence and of Guilt</h3>
+          </li>
+          <li class="topic">
+            <span class="topic__num">04</span>
+            <img src="assets/img/icon4.webp" alt="" width="260" height="185" loading="lazy">
+            <h3>Involuntary Complicity</h3>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Coming soon</span><b>✶</b><span>The Things I Didn't Do</span><b>✶</b>
+        <span>A Kling Brothers series</span><b>✶</b><span>Coming soon</span><b>✶</b>
+        <span>The Things I Didn't Do</span><b>✶</b><span>A Kling Brothers series</span><b>✶</b>
+      </div>
+    </div>
+
+    <!-- ============ CAST ============ -->
+    <section class="cast section" id="cast">
+      <div class="container">
+        <header class="section-head">
+          <h2 class="title-hand" data-split>Meet the Cast</h2>
+          <p data-reveal>Meet the talented actors and actresses who bring the characters in this series to life.</p>
+        </header>
+        <ul class="cast__grid" data-stagger="cast">
+          <li class="card"><figure><img src="assets/img/ethan.webp" alt="Jacob Stutchman as Ethan" loading="lazy"></figure><div class="card__body"><h3>Ethan</h3><p>Jacob Stutchman</p></div></li>
+          <li class="card"><figure><img src="assets/img/jade.webp" alt="Taylor Marie Hutchison as Jade" loading="lazy"></figure><div class="card__body"><h3>Jade</h3><p>Taylor Marie Hutchison</p></div></li>
+          <li class="card"><figure><img src="assets/img/ava.webp" alt="Julia Ros as Ava" loading="lazy"></figure><div class="card__body"><h3>Ava</h3><p>Julia Ros</p></div></li>
+          <li class="card"><figure><img src="assets/img/blaze.webp" alt="Jacob Dorsett as Blaze" loading="lazy"></figure><div class="card__body"><h3>Blaze</h3><p>Jacob Dorsett</p></div></li>
+          <li class="card"><figure><img src="assets/img/zoe.webp" alt="Zipporah Mainville as Zoe" loading="lazy"></figure><div class="card__body"><h3>Zoe</h3><p>Zipporah Mainville</p></div></li>
+          <li class="card"><figure><img src="assets/img/max.webp" alt="Colin Mcdermott as Max" loading="lazy"></figure><div class="card__body"><h3>Max</h3><p>Colin Mcdermott</p></div></li>
+          <li class="card"><figure><img src="assets/img/link.webp" alt="Fransiscus Fendrian as Link" loading="lazy"></figure><div class="card__body"><h3>Link</h3><p>Fransiscus Fendrian</p></div></li>
+          <li class="card"><figure><img src="assets/img/theo.webp" alt="Christopher Sheeran as Theo" loading="lazy"></figure><div class="card__body"><h3>Theo</h3><p>Christopher Sheeran</p></div></li>
+          <li class="card"><figure><img src="assets/img/arthur.webp" alt="Alex P. Jackson as Arthur" loading="lazy"></figure><div class="card__body"><h3>Arthur</h3><p>Alex P. Jackson</p></div></li>
+          <li class="card"><figure><img src="assets/img/harris.webp" alt="David A. Clark as Mr. Harris" loading="lazy"></figure><div class="card__body"><h3>Mr. Harris</h3><p>David A. Clark</p></div></li>
+          <li class="card"><figure><img src="assets/img/coach.webp" alt="Kevin Anthony as Coach Mark" loading="lazy"></figure><div class="card__body"><h3>Coach Mark</h3><p>Kevin Anthony</p></div></li>
+          <li class="card"><figure><img src="assets/img/nikki.webp" alt="Nikki Marrow as Nikki" loading="lazy"></figure><div class="card__body"><h3>Nikki</h3><p>Nikki Marrow</p></div></li>
+          <li class="card"><figure><img src="assets/img/nancy.webp" alt="Suzanne O'Donnell as Nancy" loading="lazy"></figure><div class="card__body"><h3>Nancy</h3><p>Suzanne O'Donnell</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ CREW ============ -->
+    <section class="crew section" id="crew">
+      <div class="crew__bg parallax-bg" aria-hidden="true">
+        <img src="assets/img/teambg.webp" alt="" loading="lazy" data-speed="0.18">
+      </div>
+      <div class="container crew__grid">
+        <div class="crew__intro">
+          <p class="kicker" data-reveal>Behind the camera</p>
+          <h2 class="title-hand" data-split>Technical Team</h2>
+          <p data-reveal>To bring Ethan's dark universe to life and transform his imagination into a visceral reality, we assembled a team of visionaries committed to psychological suspense storytelling. We present the minds responsible for translating silence and chaos into a unique cinematic experience.</p>
+
+          <ul class="crew__leads" data-stagger>
+            <li><span>Director</span><strong>Fernando Tosetti</strong></li>
+            <li><span>Screenwriters</span><strong>Julia Antuerpen<br>Thiago Kling</strong></li>
+            <li><span>Director of Photography</span><strong>Emmanuel Gallegos</strong></li>
+            <li><span>Casting Director</span><strong>Marco DiGeorge</strong></li>
+            <li><span>Art Director</span><strong>Brooke Kayla</strong></li>
+          </ul>
+        </div>
+
+        <div class="crew__depts" data-stagger>
+          <details class="dept" open>
+            <summary>Producers</summary>
+            <ul><li>Robert M. Albertsen Jr. <em>coordinating producer</em></li><li>Gustavo Andrade <em>co-producer</em></li><li>Thiago Catelani <em>co-producer</em></li><li>Lucas Haddad <em>co-producer</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Makeup Department</summary>
+            <ul><li>Spencer Brint <em>hair and makeup artist</em></li><li>Shannon Olivia Curran <em>head makeup artist</em></li><li>Ashley Gravette <em>hair and makeup supervisor</em></li><li>Reghan Meadows <em>head makeup artist</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Assistant Directors</summary>
+            <ul><li>Luis Pereira <em>first assistant director</em></li><li>Marco DiGeorge <em>second assistant director</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Art Department</summary>
+            <ul><li>Bryanna Borrero <em>assistant art director</em></li><li>Samantha DiGeorge <em>assistant art director</em></li><li>Mel Lagôa <em>illustrations</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Sound Department</summary>
+            <ul><li>Jack Kaufmann <em>boom operator</em></li><li>Will Olson <em>boom operator</em></li><li>Mario 'Marty' Ramirez <em>sound mixer</em></li><li>Harryson Thevenin <em>sound mixer</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Camera and Electrical</summary>
+            <ul><li>Gustavo Andrade <em>bts videographer / photographer</em></li><li>Vipul Bindra <em>gaffer</em></li><li>Ruben Calero <em>best boy electric</em></li><li>Luis Diaz <em>set photographer</em></li><li>Luis Granados <em>bts videographer / photographer</em></li><li>Bruno Latoya <em>key grip</em></li><li>Matthew Lopez <em>first assistant camera</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Costume and Wardrobe</summary>
+            <ul><li>Samantha DiGeorge <em>supervisor</em></li><li>Maya Govea <em>assistant</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Script and Continuity</summary>
+            <ul><li>Payton Atkinson <em>script / continuity</em></li><li>London Weaver <em>script continuity supervisor</em></li></ul>
+          </details>
+          <details class="dept">
+            <summary>Production Department</summary>
+            <ul><li>Jonathan Cerecedo <em>production assistant</em></li><li>Salma Giron <em>production assistant</em></li><li>Samuel Poole <em>production assistant</em></li><li>Veronica Rosario <em>production assistant</em></li><li>Mackenzie Smith <em>production assistant</em></li></ul>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY (horizontal scroll) ============ -->
+    <section class="gallery" id="gallery">
+      <div class="gallery__pin">
+        <header class="gallery__head container">
+          <h2 class="title-hand" data-split>Photo Gallery</h2>
+          <p data-reveal>In this behind-the-scenes gallery, we open the doors to our set to show the construction of this universe.</p>
+        </header>
+        <div class="gallery__track" data-gallery></div>
+        <div class="gallery__progress container" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact section" id="contact">
+      <div class="contact__bg parallax-bg" aria-hidden="true">
+        <img src="assets/img/contactbg.webp" alt="" loading="lazy" data-speed="0.15">
+      </div>
+      <div class="container contact__grid">
+        <div class="contact__intro">
+          <h2 class="title-hand" data-split>Contact</h2>
+          <p data-reveal>For more information or partnerships, contact us.</p>
+        </div>
+        <form class="form" data-form="contact" data-reveal="card" novalidate>
+          <div class="form__row">
+            <label class="field"><input name="name" type="text" placeholder=" " autocomplete="given-name"><span>Name</span></label>
+            <label class="field"><input name="surname" type="text" placeholder=" " autocomplete="family-name"><span>Surname</span></label>
+          </div>
+          <div class="form__row">
+            <label class="field"><input name="email" type="email" placeholder=" " required autocomplete="email"><span>Email *</span></label>
+            <label class="field"><input name="phone" type="tel" placeholder=" " autocomplete="tel"><span>Telephone</span></label>
+          </div>
+          <label class="field"><textarea name="message" rows="4" placeholder=" " required></textarea><span>Message *</span></label>
+          <button class="btn btn--gold btn--wide" type="submit">Submit</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="news section">
+      <div class="news__bg parallax-bg" aria-hidden="true">
+        <img src="assets/img/newsbg.webp" alt="" loading="lazy" data-speed="0.12">
+      </div>
+      <div class="container news__inner">
+        <h2 class="title-hand" data-split>Receive News</h2>
+        <p data-reveal>Stay up to date with all the information and releases about the series. Subscribe to our newsletter.</p>
+        <form class="news__form" data-form="newsletter" data-reveal novalidate>
+          <label class="sr-only" for="news-email">Email</label>
+          <input id="news-email" name="email" type="email" placeholder="Your email" required autocomplete="email">
+          <button class="btn btn--gold" type="submit">Subscribe</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <img class="footer__logo" src="assets/img/logo.webp" alt="The Things I Didn't Do" width="700" height="269" loading="lazy">
+        <p>Things I Didn't Do is an American series that explores the boundaries between thought and action, silence and consequence, youth and responsibility.</p>
+        <p>A work that invites the public to look at what normally goes unnoticed.</p>
+      </div>
+      <div class="footer__follow">
+        <h3>Follow us</h3>
+        <p>Connect with us on social media to follow behind-the-scenes content and news about the series.</p>
+        <div class="footer__social">
+          <a href="https://facebook.com/ttiddtv" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V8.8c0-.5.3-.8.5-.8z"/></svg>
+          </a>
+          <a href="https://instagram.com/ttiddtv" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>Copyright © 2026 — All rights reserved.</p>
+      <a href="#top" class="footer__top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- ============ TRAILER MODAL ============ -->
+  <div class="modal" data-modal="trailer" role="dialog" aria-modal="true" aria-label="Trailer" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog">
+      <button class="modal__close" data-close aria-label="Close trailer">×</button>
+      <video class="modal__video" controls playsinline preload="none" poster="assets/img/heroposter.webp">
+        <source src="assets/video/trailer.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="modal lightbox" data-modal="lightbox" role="dialog" aria-modal="true" aria-label="Photo" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <button class="modal__close" data-close aria-label="Close photo">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" data-lb="-1" aria-label="Previous photo">‹</button>
+    <img class="lightbox__img" alt="Behind the scenes photo">
+    <button class="lightbox__nav lightbox__nav--next" data-lb="1" aria-label="Next photo">›</button>
+    <p class="lightbox__count"></p>
+  </div>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
