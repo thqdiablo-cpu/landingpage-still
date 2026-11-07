@@ -12,14 +12,12 @@
 <meta name="description" content="Conte sobre o seu projeto e solicite uma proposta da STILL STUDIO.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(d){try{var s=localStorage;["theme","fs","motion","links"].forEach(function(k){var v=s.getItem("still-"+k);if(v)d.setAttribute("data-"+k,v)})}catch(e){}d.className+=" js"})(document.documentElement)</script>
+<script>document.documentElement.className+=" js"</script>
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-:root{--bg:#F2F2F0;--alt:#F7F7F5;--card:#FFFFFF;--ink:#050707;--accent:#EE2945;--muted:rgba(5,7,7,.64);--line:rgba(5,7,7,.14);--err:#C8102E;--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23050707' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");--b2c:#F6B9C2;
+:root{--accent:#EE2945;--bg:#0B0D0E;--alt:#181A1C;--card:#16191B;--ink:#F2F2F0;--muted:rgba(242,242,240,.66);--line:rgba(242,242,240,.14);--err:#FF6B79;--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23F2F2F0' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");--b2c:#7A1A28;color-scheme:dark;
 --d:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--b:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D0E;--alt:#181A1C;--card:#16191B;--ink:#F2F2F0;--muted:rgba(242,242,240,.66);--line:rgba(242,242,240,.14);--err:#FF6B79;--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23F2F2F0' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");--b2c:#7A1A28;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0B0D0E;--alt:#181A1C;--card:#16191B;--ink:#F2F2F0;--muted:rgba(242,242,240,.66);--line:rgba(242,242,240,.14);--err:#FF6B79;--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23F2F2F0' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");--b2c:#7A1A28;color-scheme:dark}
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--b);-webkit-font-smoothing:antialiased;min-height:100svh}
 a{color:inherit}p{margin:0}
@@ -109,7 +107,6 @@ textarea{min-height:9rem;resize:vertical}
 </style>
 </head>
 <body>
-<a class="skip" href="#f">Pular para o conteúdo</a>
 <div class="bg" aria-hidden="true"><span class="bl b1"></span><span class="bl b2"></span></div>
 <div class="w">
   <header class="top"><a class="logo" href="/" aria-label="STILL STUDIO, voltar para a página inicial"><svg viewBox="461.68 371.28 996.64 337.44" aria-hidden="true"><path d="M 1126.058594 371.679688 L 1126.058594 512.910156 C 1113.21875 432.660156 1043.875 371.277344 960.011719 371.277344 C 876.097656 371.277344 806.726562 432.730469 793.945312 513.046875 L 793.945312 371.890625 L 461.683594 371.890625 L 461.683594 708.679688 L 793.945312 708.679688 L 793.945312 566.953125 C 806.726562 647.269531 876.097656 708.71875 960.011719 708.71875 C 1046.203125 708.71875 1117.152344 643.917969 1127.078125 560.398438 C 1136.085938 643.648438 1206.542969 708.46875 1292.1875 708.46875 C 1383.9375 708.46875 1458.316406 634.089844 1458.316406 542.339844 L 1458.316406 371.679688 Z"/></svg></a><div class="tr"><div data-ctl></div><a class="back" href="/">Voltar ao site</a></div></header>
@@ -178,7 +175,7 @@ textarea{min-height:9rem;resize:vertical}
 var FORM_ENDPOINT="";
 (function(){
  var T=(window.STILL&&window.STILL.T)||function(x){return x};
- var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches||document.documentElement.getAttribute("data-motion")==="off";
+ var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
  var f=document.getElementById("f"),steps=[].slice.call(f.querySelectorAll(".step")),cur=0,busy=false,sending=false;
  var lis=[].slice.call(document.querySelectorAll(".pn li")),fill=document.getElementById("fill"),cnt=document.getElementById("cnt");
  var prev=document.getElementById("prev"),next=document.getElementById("next"),fe=document.getElementById("fe");

@@ -1,4 +1,4 @@
-/* STILL STUDIO — preferências compartilhadas: idioma (PT/EN/ES), tema claro/escuro e acessibilidade.
+/* STILL STUDIO — escolha de idioma (PT/EN/ES), compartilhada pelas páginas.
    Carregar no fim do <body>, ANTES do script da página: a tradução acontece antes das animações montarem os textos.
    Para traduzir um texto novo, adicione uma linha em DICT: "texto em português": ["English", "Español"]. */
 (function(){
@@ -16,8 +16,7 @@
   "© 2026 STILL STUDIO · Estúdio criativo":["© 2026 STILL STUDIO · Creative studio","© 2026 STILL STUDIO · Estudio creativo"],
   "STILL STUDIO | Estúdio criativo":["STILL STUDIO | Creative studio","STILL STUDIO | Estudio creativo"],
   "Branding e identidade visual, social media e motion design. A STILL STUDIO conecta estratégia, criatividade e design.":["Branding and visual identity, social media and motion design. STILL STUDIO connects strategy, creativity and design.","Branding e identidad visual, redes sociales y motion design. STILL STUDIO conecta estrategia, creatividad y diseño."],
-  "Pular para o conteúdo":["Skip to content","Saltar al contenido"],"Pausar animação":["Pause animation","Pausar animación"],"Retomar animação":["Resume animation","Reanudar animación"],
-  /* quem somos e números */
+    /* quem somos e números */
   "Quem somos":["Who we are","Quiénes somos"],
   "Uma marca bonita chama atenção. Uma marca bem pensada é entendida, escolhida e lembrada.":["A beautiful brand gets attention. A well-thought-out brand is understood, chosen and remembered.","Una marca bonita llama la atención. Una marca bien pensada es entendida, elegida y recordada."],
   "@hl":["understood|remembered","entendida|recordada"],
@@ -162,10 +161,7 @@
   "Descreva o projeto com pelo menos 20 caracteres.":["Describe the project in at least 20 characters.","Describe el proyecto con al menos 20 caracteres."],
   "Não foi possível enviar sua solicitação agora. Verifique sua conexão e tente novamente.":["We couldn't send your request right now. Check your connection and try again.","No fue posible enviar tu solicitud ahora. Revisa tu conexión e inténtalo de nuevo."],
   /* controles */
-  "Acessibilidade":["Accessibility","Accesibilidad"],"Tamanho do texto":["Text size","Tamaño del texto"],"Texto menor":["Smaller text","Texto más pequeño"],"Texto padrão":["Default text","Texto estándar"],
-  "Texto maior":["Larger text","Texto más grande"],"Pausar animações":["Pause animations","Pausar animaciones"],"Destacar links":["Highlight links","Resaltar enlaces"],
-  "Ativar modo escuro":["Switch to dark mode","Activar modo oscuro"],"Ativar modo claro":["Switch to light mode","Activar modo claro"],"Idioma":["Language","Idioma"],
-  "Escolher idioma":["Choose language","Elegir idioma"],"Libras: use o botão do VLibras no canto da tela.":["Brazilian Sign Language (Libras) is available in Portuguese.","La lengua de señas brasileña (Libras) está disponible en portugués."]
+  "Idioma":["Language","Idioma"],"Escolher idioma":["Choose language","Elegir idioma"]
  };
 
  /* ---------- idioma ---------- */
@@ -197,69 +193,26 @@
  }
  window.STILL={lang:lang,T:T,translate:translate};
 
- /* ---------- tema ---------- */
- var mq=matchMedia("(prefers-color-scheme: dark)");
- function isDark(){var t=root.getAttribute("data-theme");return t?t==="dark":mq.matches}
- function setTheme(t){root.setAttribute("data-theme",t);set("still-theme",t);syncTheme();var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=t==="dark"?"#0B0D0E":"#050707"}
- function syncTheme(){[].forEach.call(document.querySelectorAll(".ctl-theme"),function(b){var l=T(isDark()?"Ativar modo claro":"Ativar modo escuro");b.setAttribute("aria-label",l);b.title=l;b.setAttribute("aria-pressed",isDark())})}
-
- /* ---------- acessibilidade ---------- */
- function pref(k){return root.getAttribute("data-"+k)}
- function setPref(k,v){if(v==null)root.removeAttribute("data-"+k);else root.setAttribute("data-"+k,v);set("still-"+k,v)}
-
- /* ---------- controles no menu ---------- */
- var ICON_A11Y='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8" fill="currentColor" stroke="none"/><path d="M5 8.5l7 1.5 7-1.5M12 10v5M12 15l-3.5 6M12 15l3.5 6"/></svg>';
- var ICON_THEME='<svg class="th-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="th-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>';
+ /* ---------- botão de idioma no menu ---------- */
  var uid=0;
  [].forEach.call(document.querySelectorAll("[data-ctl]"),function(box){
   box.classList.add("ctl");var id=++uid;
-  box.innerHTML='<button class="ctl-b ctl-a11y" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="pa'+id+'" aria-label="'+T("Acessibilidade")+'" title="'+T("Acessibilidade")+'">'+ICON_A11Y+'</button>'+
-   '<button class="ctl-b ctl-theme" type="button">'+ICON_THEME+'</button>'+
-   '<button class="ctl-b ctl-lang" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="pl'+id+'" aria-label="'+T("Escolher idioma")+': '+NAMES[lang]+'">'+lang.toUpperCase()+'</button>';
-  var pa=document.createElement("div");pa.className="pop";pa.id="pa"+id;pa.hidden=true;pa.setAttribute("role","dialog");pa.setAttribute("aria-label",T("Acessibilidade"));
-  pa.innerHTML='<h2>'+T("Tamanho do texto")+'</h2><div class="fs" role="group" aria-label="'+T("Tamanho do texto")+'"><button type="button" data-fs="" aria-label="'+T("Texto padrão")+'">A</button><button type="button" data-fs="1" aria-label="'+T("Texto maior")+'">A+</button><button type="button" data-fs="2" aria-label="'+T("Texto maior")+' +">A++</button></div><hr>'+
-   '<button class="it" type="button" role="switch" data-p="motion" data-on="off">'+T("Pausar animações")+'<span class="sw" aria-hidden="true"></span></button>'+
-   '<button class="it" type="button" role="switch" data-p="links" data-on="on">'+T("Destacar links")+'<span class="sw" aria-hidden="true"></span></button>'+
-   (lang==="pt"?'<p class="note">'+T("Libras: use o botão do VLibras no canto da tela.")+'</p>':'')+
-   '<hr><button class="it" type="button" data-close>'+T("Fechar")+'</button>';
+  box.innerHTML='<button class="ctl-b ctl-lang" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="pl'+id+'" aria-label="'+T("Escolher idioma")+': '+NAMES[lang]+'">'+lang.toUpperCase()+'</button>';
   var pl=document.createElement("div");pl.className="pop";pl.id="pl"+id;pl.hidden=true;pl.setAttribute("role","menu");pl.setAttribute("aria-label",T("Idioma"));
   pl.innerHTML='<h2>'+T("Idioma")+'</h2>'+LANGS.map(function(l){return '<button class="it" type="button" role="menuitemradio" lang="'+HTML[l]+'" data-lang="'+l+'" aria-checked="'+(l===lang)+'"'+(l===lang?' aria-current="true"':'')+'>'+NAMES[l]+'</button>'}).join("");
-  document.body.appendChild(pa);document.body.appendChild(pl);
-  var bA=box.querySelector(".ctl-a11y"),bT=box.querySelector(".ctl-theme"),bL=box.querySelector(".ctl-lang");
-  function syncA11y(){[].forEach.call(pa.querySelectorAll("[data-fs]"),function(b){b.setAttribute("aria-pressed",(pref("fs")||"")===b.getAttribute("data-fs"))});
-   [].forEach.call(pa.querySelectorAll("[data-p]"),function(b){b.setAttribute("aria-checked",pref(b.getAttribute("data-p"))===b.getAttribute("data-on"))})}
-  function place(pop,btn){var r=btn.getBoundingClientRect();pop.style.top=Math.min(r.bottom+8,innerHeight-40)+"px";var left=Math.max(12,Math.min(r.right-pop.offsetWidth,innerWidth-pop.offsetWidth-12));pop.style.left=left+"px"}
-  function open(pop,btn){closeAll();pop.hidden=false;place(pop,btn);btn.setAttribute("aria-expanded","true");var f=pop.querySelector("button");if(f)f.focus()}
-  function close(pop,btn,focus){if(pop.hidden)return;pop.hidden=true;btn.setAttribute("aria-expanded","false");if(focus)btn.focus()}
-  function closeAll(){close(pa,bA);close(pl,bL)}
-  box._closeAll=closeAll;
-  bA.addEventListener("click",function(e){e.stopPropagation();pa.hidden?(syncA11y(),open(pa,bA)):close(pa,bA,true)});
-  bL.addEventListener("click",function(e){e.stopPropagation();pl.hidden?open(pl,bL):close(pl,bL,true)});
-  bT.addEventListener("click",function(){setTheme(isDark()?"light":"dark")});
-  pa.addEventListener("click",function(e){e.stopPropagation();var b=e.target.closest("button");if(!b)return;
-   if(b.hasAttribute("data-close")){close(pa,bA,true);return}
-   if(b.hasAttribute("data-fs")){setPref("fs",b.getAttribute("data-fs")||null);syncA11y();place(pa,bA);return}
-   var k=b.getAttribute("data-p");if(k){var on=pref(k)!==b.getAttribute("data-on");setPref(k,on?b.getAttribute("data-on"):null);syncA11y();
-    if(k==="motion"){location.reload()}}});
+  document.body.appendChild(pl);
+  var bL=box.querySelector(".ctl-lang");
+  function close(focus){if(pl.hidden)return;pl.hidden=true;bL.setAttribute("aria-expanded","false");if(focus)bL.focus()}
+  function open(){pl.hidden=false;var r=bL.getBoundingClientRect();pl.style.top=Math.min(r.bottom+8,innerHeight-40)+"px";pl.style.left=Math.max(12,Math.min(r.right-pl.offsetWidth,innerWidth-pl.offsetWidth-12))+"px";bL.setAttribute("aria-expanded","true");var c=pl.querySelector('[aria-checked="true"]');if(c)c.focus()}
+  box._close=close;
+  bL.addEventListener("click",function(e){e.stopPropagation();pl.hidden?open():close(true)});
   pl.addEventListener("click",function(e){e.stopPropagation();var b=e.target.closest("[data-lang]");if(!b)return;set("still-lang",b.getAttribute("data-lang"));location.reload()});
-  [pa,pl].forEach(function(pop){pop.addEventListener("keydown",function(e){
-   var btn=pop===pa?bA:bL;if(e.key==="Escape"){e.preventDefault();close(pop,btn,true)}
-   if(pop===pl&&(e.key==="ArrowDown"||e.key==="ArrowUp")){e.preventDefault();var it=[].slice.call(pl.querySelectorAll(".it")),i=it.indexOf(document.activeElement);it[(i+(e.key==="ArrowDown"?1:-1)+it.length)%it.length].focus()}
-   if(e.key==="Tab"&&pop===pa){var f=[].slice.call(pa.querySelectorAll("button")),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
-   if(e.key==="Tab"&&pop===pl)close(pl,bL)})});
+  pl.addEventListener("keydown",function(e){
+   if(e.key==="Escape"){e.preventDefault();close(true)}
+   if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();var it=[].slice.call(pl.querySelectorAll(".it")),k=it.indexOf(document.activeElement);it[(k+(e.key==="ArrowDown"?1:-1)+it.length)%it.length].focus()}
+   if(e.key==="Tab")close()});
  });
- document.addEventListener("click",function(){[].forEach.call(document.querySelectorAll("[data-ctl]"),function(b){b._closeAll&&b._closeAll()})});
- addEventListener("scroll",function(){[].forEach.call(document.querySelectorAll("[data-ctl]"),function(b){b._closeAll&&b._closeAll()})},{passive:true});
- syncTheme();
- if(mq.addEventListener)mq.addEventListener("change",syncTheme);
-
- /* ---------- VLibras (Libras), só em português ---------- */
- if(lang==="pt"&&!document.querySelector("[vw]")){
-  var vw=document.createElement("div");vw.setAttribute("vw","");vw.className="enabled";
-  vw.innerHTML='<div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>';
-  document.body.appendChild(vw);
-  var s=document.createElement("script");s.src="https://vlibras.gov.br/app/vlibras-plugin.js";s.async=true;
-  s.onload=function(){try{new window.VLibras.Widget("https://vlibras.gov.br/app")}catch(e){}};
-  document.body.appendChild(s);
- }
+ function closeAll(){[].forEach.call(document.querySelectorAll("[data-ctl]"),function(b){b._close&&b._close()})}
+ document.addEventListener("click",function(){closeAll()});
+ addEventListener("scroll",closeAll,{passive:true});
 })();
