@@ -266,3 +266,10 @@ section{scroll-margin-top:20px}
   .about{--R:86vw;--card:clamp(64px,19vw,110px)}
   .arc__cards figure:nth-child(1),.arc__cards figure:nth-child(7){display:none}
 }
+
+/* ---------- WhatsApp flutuante ---------- */
+.whats{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;gap:8px;padding:12px 18px 12px 14px;border-radius:999px;background:var(--brown-800);color:var(--cream-50);font-size:14px;font-weight:500;box-shadow:0 14px 30px -10px rgba(58,22,8,.6);transition:transform .25s}
+.whats:hover{transform:translateY(-3px)}
+.form small{opacity:.6}
+.quote figcaption strong{font-size:17px}
+@media (max-width:560px){.whats span{display:none}.whats{padding:14px}}

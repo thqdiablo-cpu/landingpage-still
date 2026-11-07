@@ -46,7 +46,7 @@ const menu = document.createElement('div');
 menu.className = 'mobile-menu';
 menu.innerHTML = `<button class="close" aria-label="Fechar menu">✕</button>
   <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#servicos">Atendimentos</a>
-  <a href="#valores">Valores</a><a href="#agendar">Agendar sessão</a>`;
+  <a href="#valores">Valores</a><a href="#agendar">Conversa gratuita</a>`;
 document.body.appendChild(menu);
 const toggle = open => { menu.classList.toggle('is-open', open); menuBtn.setAttribute('aria-expanded', open); };
 menuBtn.addEventListener('click', () => toggle(true));
