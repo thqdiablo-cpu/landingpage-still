@@ -343,12 +343,12 @@ body.lock{overflow:hidden}
 
 <section class="nums" aria-labelledby="numsT"><div class="w">
   <span class="tag" data-rv id="numsT">Em números</span>
-  <!-- NÚMEROS: troque pelos dados reais do estúdio (data-to = valor final, data-suf = sufixo) -->
+  <!-- NÚMEROS: data-to = valor final, data-pre = prefixo (+), data-suf = sufixo (%) -->
   <div>
-    <div class="num" data-rv><b data-to="3">3</b><strong>Frentes de atuação</strong><span>Branding, social media e motion design trabalhando juntos.</span></div>
-    <div class="num" data-rv><b data-to="10">10</b><strong>Cases selecionados</strong><span>Um recorte do que já criamos, logo aqui embaixo.</span></div>
-    <div class="num" data-rv><b data-to="1">1</b><strong>Conversa direta</strong><span>Você fala com quem cria o seu projeto, sem intermediários.</span></div>
-    <div class="num" data-rv><b data-to="100" data-suf="%">100%</b><strong>Direção humana</strong><span>A IA entra como ferramenta, sempre com revisão de quem cria.</span></div>
+    <div class="num" data-rv><b data-to="4">4</b><strong>Anos de estúdio</strong><span>Quatro anos criando marcas, campanhas e projetos culturais.</span></div>
+    <div class="num" data-rv><b data-to="50" data-pre="+">+50</b><strong>Projetos entregues</strong><span>De identidades completas a campanhas e peças de motion.</span></div>
+    <div class="num" data-rv><b data-to="1000" data-pre="+">+1.000</b><strong>Arquivos criados</strong><span>Peças para o digital e o impresso, prontas para usar.</span></div>
+    <div class="num" data-rv><b data-to="100" data-suf="%">100%</b><strong>Clientes satisfeitos</strong><span>Cada projeto acompanhado de perto, do briefing à entrega.</span></div>
   </div>
 </div></section>
 
@@ -523,8 +523,8 @@ body.lock{overflow:hidden}
  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(init)}else{init()}
  var rt;addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){doSplits();sizeHs();frame()},200)});
 
- function count(el){var b=el.querySelector("b"),to=+b.dataset.to,suf=b.dataset.suf||"";if(reduce||!to)return;var t0=null;b.textContent="0"+suf;
-  (function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1400),e=1-Math.pow(1-k,4);b.textContent=Math.round(to*e)+suf;if(k<1)requestAnimationFrame(step)})(performance.now())}
+ function count(el){var b=el.querySelector("b"),to=+b.dataset.to,suf=b.dataset.suf||"",pre=b.dataset.pre||"";if(reduce||!to)return;var t0=null,f=function(n){return pre+n.toLocaleString("pt-BR")+suf};b.textContent=f(0);
+  (function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-k,4);b.textContent=f(Math.round(to*e));if(k<1)requestAnimationFrame(step)})(performance.now())}
 
  /* abertura: o logo segue levemente o cursor */
  var hero=document.getElementById("hero"),la=document.getElementById("logoAnim");
