@@ -441,18 +441,12 @@ body.lock{overflow:hidden}
   <div class="rows" aria-label="Serviços">
     <div class="row" data-dir="-1"><a href="/proposta?servico=branding">Branding</a><i class="sh" aria-hidden="true"></i><a class="o" href="/proposta?servico=branding">Identidade visual</a><i class="sh c" aria-hidden="true"></i></div>
     <div class="row" data-dir="1"><a class="o" href="/proposta?servico=social">Social media</a><i class="sh u" aria-hidden="true"></i><a href="/proposta?servico=social">Direção de arte</a><i class="sh" aria-hidden="true"></i></div>
-    <div class="row" data-dir="-1"><a href="/proposta?servico=motion">Motion design</a><i class="sh c" aria-hidden="true"></i><a class="o" href="/proposta?servico=motion">Logo animado</a><i class="sh u" aria-hidden="true"></i></div>
+    <div class="row" data-dir="-1"><a href="/proposta?servico=motion">Motion design</a><i class="sh c" aria-hidden="true"></i></div>
   </div>
 <div class="w"><div class="svc-tags" data-rv><span>Logo</span><span>Paleta</span><span>Tipografia</span><span>Manual de marca</span><span>Templates</span><span>Feed</span><span>Campanhas</span><span>Vinhetas</span><span>Reels</span></div></div>
 </section>
 
 <section class="talk" id="contato">
-  <div class="shapes" id="shapes" aria-hidden="true">
-    <i class="q" style="--sz:clamp(90px,14vw,200px);--x:72%;--y:12%" data-f="1.2" data-r="12"></i>
-    <i class="u" style="--sz:clamp(80px,11vw,160px);--x:58%;--y:70%" data-f="1.6" data-r="-18"></i>
-    <i class="c" style="--sz:clamp(40px,5vw,70px);--x:6%;--y:10%;border-color:var(--accent)" data-f="2" data-r="0"></i>
-    <i class="q" style="--sz:clamp(30px,4vw,50px);--x:46%;--y:8%;background:rgba(255,255,255,.85)" data-f="-1.8" data-r="30"></i>
-  </div>
   <div class="w">
     <span class="tag" data-rv>Vamos conversar</span>
     <h2 aria-label="Vamos dar vida à sua marca.">Vamos dar vida <br>a <span class="slot" id="slot" aria-hidden="true"><span class="on">sua marca.</span><span>seu feed.</span><span>sua ideia.</span><span>seu evento.</span><span>seu produto.</span></span></h2>
@@ -556,15 +550,7 @@ body.lock{overflow:hidden}
  /* duplica as palavras dos serviços para preencher a faixa */
  rows.forEach(function(rw){$(":scope>*",rw).forEach(function(c){var k=c.cloneNode(true);k.setAttribute("aria-hidden","true");k.setAttribute("tabindex","-1");rw.appendChild(k)})});
 
- /* vamos conversar: formas seguem o cursor, palavra troca, botão magnético e escolha do serviço */
- var shapes=$("#shapes i"),mx=0,my=0,cx=0,cy=0,tOn=false;
- if(fine&&!reduce){
-  talk.addEventListener("mousemove",function(e){var r=talk.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;if(!tOn){tOn=true;tloop()}});
-  talk.addEventListener("mouseleave",function(){mx=0;my=0});
- }
- function tloop(){cx+=(mx-cx)*.08;cy+=(my-cy)*.08;var t=performance.now()/1000;
-  shapes.forEach(function(s,i){var f=+s.dataset.f,r=+s.dataset.r;s.style.setProperty("--tx",(cx*f*70+Math.sin(t*.6+i)*8)+"px");s.style.setProperty("--ty",(cy*f*70+Math.cos(t*.5+i)*8)+"px");s.style.setProperty("--rt",(r+cx*f*25+t*(i%2?6:-4))+"deg")});
-  requestAnimationFrame(tloop)}
+ /* vamos conversar: palavra troca, botão magnético e escolha do serviço */
  var slot=$("#slot span"),si=0;
  if(!reduce)setInterval(function(){var a=slot[si];si=(si+1)%slot.length;var b=slot[si];a.classList.remove("on");a.classList.add("out");b.classList.remove("out");b.classList.add("on");setTimeout(function(){a.classList.remove("out")},700)},2200);
  var mag=document.getElementById("mag"),magTxt=document.getElementById("magTxt"),goTxt=document.getElementById("goTxt"),opts=$("#opts .opt");
