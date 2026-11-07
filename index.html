@@ -190,8 +190,6 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .row{display:flex;width:max-content;align-items:center;gap:clamp(1.2rem,3vw,2.6rem);white-space:nowrap;will-change:transform;font:500 clamp(3.4rem,10.5vw,10rem)/1 var(--d);letter-spacing:-.05em}
 .row a{text-decoration:none;transition:color .3s}
 .row a:hover{color:var(--accent)}
-.row .o{color:transparent;-webkit-text-stroke:1.5px var(--on-dark)}
-.row .o:hover{-webkit-text-stroke-color:var(--accent);color:transparent}
 .row .sh{flex:none;display:block;width:.55em;height:.55em;background:var(--accent)}
 .row .sh.c{border-radius:50%}.row .sh.u{border-radius:0 0 50% 50%/0 0 50% 50%}
 .svc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:clamp(2rem,5vw,3rem)}
@@ -212,10 +210,24 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .slot span.out{transform:translateY(-110%);opacity:0}
 .ask{display:grid;gap:.9rem}
 .ask small{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-d)}
-.opts{display:flex;flex-wrap:wrap;gap:.6rem}
-.opt{font:500 1rem var(--b);color:var(--on-dark);background:transparent;border:1.5px solid var(--line-d);border-radius:999px;padding:.7rem 1.2rem;cursor:pointer;transition:border-color .25s,background .25s,transform .4s var(--spring)}
-.opt:hover{border-color:var(--on-dark);transform:translateY(-2px)}
-.opt[aria-pressed=true]{background:var(--accent);border-color:var(--accent)}
+/* escolha do serviço: cada frente é uma forma do logo */
+.opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.5rem,1vw,.8rem);max-width:760px}
+@media(max-width:640px){.opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.opt{display:grid;gap:1rem;justify-items:start;text-align:left;font:600 1.02rem/1.15 var(--b);color:var(--on-dark);background:var(--dark-2);border:0;border-radius:18px;padding:1.1rem 1.1rem 1rem;cursor:pointer;transition:background .35s,transform .45s var(--spring)}
+.opt:hover{transform:translateY(-4px)}
+.opt small{display:block;font:500 .82rem var(--b);letter-spacing:0;text-transform:none;color:var(--muted-d);margin-top:.25rem;transition:color .35s}
+.opt .ic{display:flex;gap:.2rem;align-items:flex-end;height:2.4rem}
+.opt .ic b{display:block;width:2.4rem;height:2.4rem;background:var(--accent);transition:transform .6s var(--spring),background .35s}
+.opt .ic.c b{border-radius:50%}
+.opt .ic.u b{border-radius:0 0 50% 50%/0 0 50% 50%}
+.opt .ic.all b{width:.95rem;height:.95rem}.opt .ic.all b:nth-child(2){border-radius:50%}.opt .ic.all b:nth-child(3){border-radius:0 0 50% 50%/0 0 50% 50%}
+.opt:hover .ic.sq b{transform:rotate(45deg) scale(.8)}
+.opt:hover .ic.c b{transform:translateY(-.5rem)}
+.opt:hover .ic.u b{transform:rotate(180deg)}
+.opt:hover .ic.all b:nth-child(1){transform:translateY(-.4rem)}.opt:hover .ic.all b:nth-child(2){transform:translateY(-.8rem)}.opt:hover .ic.all b:nth-child(3){transform:translateY(-.4rem)}
+.opt[aria-pressed=true]{background:var(--accent)}
+.opt[aria-pressed=true] .ic b{background:var(--on-dark)}
+.opt[aria-pressed=true] small{color:rgba(255,255,255,.85)}
 .go{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2rem}
 .mag{position:relative;display:grid;place-items:center;align-content:center;gap:.4rem;width:clamp(9rem,15vw,12rem);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-dark);text-decoration:none;text-align:center;font:600 1.05rem/1.2 var(--b);padding:1rem;transform:translate(var(--bx,0px),var(--by,0px));transition:transform .35s var(--ease),background .3s;box-shadow:0 0 0 0 rgba(238,41,69,.5);animation:beat 2.4s ease-in-out infinite}
 .mag:hover{background:var(--on-dark);color:var(--ink);animation:none}
@@ -446,7 +458,12 @@ body.lock{overflow:hidden}
     <span class="tag" data-rv>Vamos conversar</span>
     <h2 aria-label="Vamos dar vida à sua marca.">Vamos dar vida <br>a <span class="slot" id="slot" aria-hidden="true"><span class="on">sua marca.</span><span>seu feed.</span><span>sua ideia.</span><span>seu evento.</span><span>seu produto.</span></span></h2>
     <div class="ask" data-rv><small>Do que você precisa?</small>
-      <div class="opts" id="opts"><button class="opt" type="button" data-v="branding" aria-pressed="false">Branding</button><button class="opt" type="button" data-v="social" aria-pressed="false">Social media</button><button class="opt" type="button" data-v="motion" aria-pressed="false">Motion design</button><button class="opt" type="button" data-v="outro" aria-pressed="false">Ainda não sei</button></div></div>
+      <div class="opts" id="opts">
+        <button class="opt" type="button" data-v="branding" aria-pressed="false"><span class="ic sq" aria-hidden="true"><b></b></span><span>Branding<small>Marca e identidade</small></span></button>
+        <button class="opt" type="button" data-v="social" aria-pressed="false"><span class="ic c" aria-hidden="true"><b></b></span><span>Social media<small>Feed e campanhas</small></span></button>
+        <button class="opt" type="button" data-v="motion" aria-pressed="false"><span class="ic u" aria-hidden="true"><b></b></span><span>Motion design<small>Marca em movimento</small></span></button>
+        <button class="opt" type="button" data-v="outro" aria-pressed="false"><span class="ic all" aria-hidden="true"><b></b><b></b><b></b></span><span>Ainda não sei<small>A gente descobre junto</small></span></button>
+      </div></div>
     <div class="go" data-rv><a class="mag" id="mag" href="/proposta"><span id="magTxt">Vamos conversar</span><b aria-hidden="true">↗</b></a><p id="goTxt">Escolha o que você precisa e <b>a gente já começa a conversa com isso em mente.</b></p></div>
   </div>
 </section>
