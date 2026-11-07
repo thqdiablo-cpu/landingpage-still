@@ -25,8 +25,23 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 Página **Nossa história** em `historia/index.html` (/historia): "Quem faz parte da nossa história", com a grade de logos.
 
 ## Logos de clientes e parceiros
-Ficam na página `historia/index.html` (texto curto da história + "Quem faz parte da nossa história"), com 12 espaços reservados, soltos, alinhados à esquerda e com transparência.
+Ficam na página `historia/index.html`: Hotéis.com, Farmabase, Fini, Arteris, Caterpillar, Honda e Aegea,
+com a nota "* Marcas atendidas pela equipe da STILL dentro de uma agência."
+Por enquanto aparecem como nomes em texto. Para usar os logos oficiais:
 1. Coloque os arquivos na pasta `logos/` (de preferência SVG ou PNG com fundo transparente).
-2. Troque cada `<div class="lg ph" data-rv style="--n:1">Logo 01</div>` por
-   `<div class="lg" data-rv style="--n:1"><img src="/logos/nome-do-cliente.svg" alt="Nome do cliente"></div>`.
+2. Troque cada `<div class="lg nm" data-rv style="--n:1">Hotéis.com</div>` por
+   `<div class="lg" data-rv style="--n:1"><img src="/logos/hoteis-com.svg" alt="Hotéis.com"></div>`.
 Os logos aparecem em cinza e com transparência, flutuando de leve, e ganham a cor original ao passar o mouse.
+
+## Versão B (teste)
+`versao-b/index.html` (/versao-b) é uma alternativa no formato de página de conversão, guardada para comparação.
+Está marcada com `noindex`.
+
+## Publicar
+Funciona em qualquer hospedagem estática (Vercel, Netlify, Cloudflare Pages, GitHub Pages): envie a pasta inteira.
+
+## ANTES de divulgar (2 itens obrigatórios)
+1. Receber as propostas: em `proposta/index.html`, preencha `FORM_ENDPOINT` (perto do fim do arquivo)
+   com a URL do serviço que recebe POST em JSON (Formspree, Google Apps Script, Make, Zapier, backend próprio).
+2. Pré-visualização em redes sociais: em `index.html` e `proposta/index.html`, troque
+   `content="/og.png"` pela URL completa, ex.: `content="https://seudominio.com.br/og.png"`.
