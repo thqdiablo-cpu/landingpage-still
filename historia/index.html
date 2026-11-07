@@ -26,15 +26,22 @@ a{color:inherit}p{margin:0}
 .intro{padding-block:clamp(3rem,8vw,6rem) clamp(2rem,5vw,3.5rem)}
 .tag{display:inline-flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:500;margin-bottom:1.3rem}
 .tag::before{content:"";width:.8rem;height:.8rem;border-radius:2px;background:var(--accent)}
-h1{font:500 clamp(2.8rem,8vw,7rem)/.95 var(--d);letter-spacing:-.05em;margin:0;max-width:13ch;text-wrap:balance}
+.story{font:500 clamp(1.7rem,3.6vw,3rem)/1.15 var(--d);letter-spacing:-.035em;max-width:24ch;margin:0;text-wrap:balance}
+.story em{font-style:normal;color:var(--accent)}
+.intro .sub{color:var(--muted);max-width:52ch;margin-top:1.6rem;font-size:1.1rem}
+.who{text-align:center;padding-block:clamp(3rem,7vw,5.5rem) clamp(4rem,9vw,7rem)}
+h1{font:500 clamp(2.4rem,6.4vw,5.6rem)/.98 var(--d);letter-spacing:-.05em;margin:0 auto;max-width:14ch;text-wrap:balance}
 h1 em{font-style:normal;color:var(--accent)}
-.intro p{color:var(--muted);max-width:46ch;margin-top:1.4rem;font-size:1.15rem}
-.grid{display:grid;gap:clamp(.6rem,1.2vw,1rem);grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr));padding-bottom:clamp(3rem,7vw,5rem)}
-.lg{display:grid;place-items:center;aspect-ratio:3/2;border-radius:18px;background:var(--surface);padding:1.4rem;transition:transform .5s var(--spring),box-shadow .3s}
-.lg:hover{transform:translateY(-5px);box-shadow:0 20px 40px -26px rgba(5,7,7,.4)}
-.lg img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
-.lg:hover img{filter:none;opacity:1}
-.lg.ph{background:transparent;border:1.5px dashed var(--line);color:var(--muted);font:600 .8rem var(--b);letter-spacing:.1em;text-transform:uppercase}
+/* logos soltos, centralizados e com transparência; acendem ao passar o mouse */
+.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(1.6rem,4vw,3.5rem) clamp(2rem,6vw,5rem);max-width:980px;margin:clamp(2.5rem,6vw,4rem) auto 0}
+.lg{display:grid;place-items:center;height:clamp(2.4rem,4vw,3.4rem);opacity:.32;transition:opacity .4s,transform .5s var(--spring);animation:float 6s ease-in-out infinite;animation-delay:calc(var(--n,0)*-.7s)}
+.lg:hover{opacity:1;transform:scale(1.08)}
+.js .lg[data-rv].in{opacity:.32}
+.js .lg[data-rv].in:hover{opacity:1}
+.lg img{height:100%;width:auto;max-width:11rem;object-fit:contain;filter:grayscale(1);transition:filter .4s}
+.lg:hover img{filter:none}
+.lg.ph{font:600 clamp(1rem,1.8vw,1.35rem) var(--d);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+@keyframes float{50%{translate:0 -6px}}
 .cta{margin:0 clamp(8px,1.1vw,14px) clamp(8px,1.1vw,14px);border-radius:clamp(20px,2.4vw,32px);background:var(--dark);color:var(--on-dark)}
 .cta .w{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem;padding-block:clamp(3rem,7vw,5rem)}
 .cta h2{font:500 clamp(2rem,4.6vw,3.6rem)/1 var(--d);letter-spacing:-.04em;margin:0;max-width:16ch}
@@ -42,7 +49,7 @@ h1 em{font-style:normal;color:var(--accent)}
 .btn:hover{transform:translateY(-2px)}
 .js [data-rv]{opacity:0;transform:translateY(30px) scale(.96);transition:opacity .8s var(--ease) var(--dl,0s),transform .9s var(--spring) var(--dl,0s)}
 .js [data-rv].in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}.js [data-rv]{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}.js [data-rv]{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -50,24 +57,21 @@ h1 em{font-style:normal;color:var(--accent)}
 <main>
 <section class="intro"><div class="w">
   <span class="tag" data-rv>Nossa história</span>
-  <h1 data-rv>Quem faz parte da nossa <em>história</em>.</h1>
-  <p data-rv>Marcas, empresas, projetos culturais e iniciativas que já criaram com a STILL.</p>
+  <p class="story" data-rv>A STILL nasceu há 4 anos com uma ideia simples: <em>pensar antes de desenhar.</em></p>
+  <p class="sub" data-rv>De lá pra cá, foram mais de 50 projetos entregues para marcas, empresas, projetos culturais e iniciativas que acreditam que um design bem pensado faz a marca ser entendida, escolhida e lembrada.</p>
 </div></section>
-<section><div class="w">
-  <!-- LOGOS: troque cada <div class="lg ph">Logo NN</div> por
-       <div class="lg"><img src="/logos/nome-do-cliente.svg" alt="Nome do cliente"></div> -->
-  <div class="grid">
-    <div class="lg ph" data-rv>Logo 01</div><div class="lg ph" data-rv>Logo 02</div><div class="lg ph" data-rv>Logo 03</div><div class="lg ph" data-rv>Logo 04</div>
-    <div class="lg ph" data-rv>Logo 05</div><div class="lg ph" data-rv>Logo 06</div><div class="lg ph" data-rv>Logo 07</div><div class="lg ph" data-rv>Logo 08</div>
-    <div class="lg ph" data-rv>Logo 09</div><div class="lg ph" data-rv>Logo 10</div><div class="lg ph" data-rv>Logo 11</div><div class="lg ph" data-rv>Logo 12</div>
-  </div>
+<section class="who"><div class="w">
+  <h1 data-rv>Quem faz parte da nossa <em>história</em>.</h1>
+  <!-- LOGOS: troque cada <div class="lg ph" ...>Logo NN</div> por
+       <div class="lg" data-rv style="--n:1"><img src="/logos/nome-do-cliente.svg" alt="Nome do cliente"></div> -->
+  <div class="logos"><div class="lg ph" data-rv style="--n:1">Logo 01</div><div class="lg ph" data-rv style="--n:2">Logo 02</div><div class="lg ph" data-rv style="--n:3">Logo 03</div><div class="lg ph" data-rv style="--n:4">Logo 04</div><div class="lg ph" data-rv style="--n:5">Logo 05</div><div class="lg ph" data-rv style="--n:6">Logo 06</div><div class="lg ph" data-rv style="--n:7">Logo 07</div><div class="lg ph" data-rv style="--n:8">Logo 08</div><div class="lg ph" data-rv style="--n:9">Logo 09</div><div class="lg ph" data-rv style="--n:10">Logo 10</div><div class="lg ph" data-rv style="--n:11">Logo 11</div><div class="lg ph" data-rv style="--n:12">Logo 12</div></div>
 </div></section>
 </main>
 <section class="cta"><div class="w"><h2>Sua marca pode ser a próxima.</h2><a class="btn" href="/proposta">Solicitar proposta ↗</a></div></section>
 <script>
 (function(){
  var els=[].slice.call(document.querySelectorAll("[data-rv]"));
- els.forEach(function(el,i){el.style.setProperty("--dl",(el.classList.contains("lg")?(i%4)*.08:0)+"s")});
+ els.forEach(function(el,i){el.style.setProperty("--dl",(el.classList.contains("lg")?(i%6)*.07:0)+"s")});
  if(!("IntersectionObserver" in window)||matchMedia("(prefers-reduced-motion:reduce)").matches){els.forEach(function(e){e.classList.add("in")});return}
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
  els.forEach(function(e){io.observe(e)});
