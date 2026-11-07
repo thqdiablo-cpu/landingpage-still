@@ -20,9 +20,9 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 6. **Serviços**: palavras grandes que andam para o lado com a rolagem; cada uma abre a proposta com o serviço marcado.
 7. **Vamos conversar**: a palavra final troca sozinha, a pessoa escolhe o serviço
    e o botão leva para `/proposta?servico=...`, que já abre o formulário com o serviço marcado.
-8. **Rodapé**: logo grande que se monta ao aparecer.
+8. **Rodapé**: a palavra STILL em letras grandes vermelhas que sobem ao aparecer.
 
-Página **Nossa história** em `historia/index.html` (/historia): "Quem faz parte da nossa história", com a grade de logos.
+Página **Nossa história** em `historia/index.html` (/historia): texto curto da história e "Quem faz parte da nossa história", com os clientes.
 
 ## Logos de clientes e parceiros
 Ficam na página `historia/index.html`: Hotéis.com, Farmabase, Fini, Arteris, Caterpillar, Honda e Aegea,
