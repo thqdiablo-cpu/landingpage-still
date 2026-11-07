@@ -25,7 +25,7 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 Página **Nossa história** em `historia/index.html` (/historia): "Quem faz parte da nossa história", com a grade de logos.
 
 ## Logos de clientes e parceiros
-Ficam na página `historia/index.html` (texto curto da história + "Quem faz parte da nossa história"), com 12 espaços reservados, soltos e com transparência.
+Ficam na página `historia/index.html` (texto curto da história + "Quem faz parte da nossa história"), com 12 espaços reservados, soltos, alinhados à esquerda e com transparência.
 1. Coloque os arquivos na pasta `logos/` (de preferência SVG ou PNG com fundo transparente).
 2. Troque cada `<div class="lg ph" data-rv style="--n:1">Logo 01</div>` por
    `<div class="lg" data-rv style="--n:1"><img src="/logos/nome-do-cliente.svg" alt="Nome do cliente"></div>`.

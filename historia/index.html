@@ -29,11 +29,11 @@ a{color:inherit}p{margin:0}
 .story{font:500 clamp(1.7rem,3.6vw,3rem)/1.15 var(--d);letter-spacing:-.035em;max-width:24ch;margin:0;text-wrap:balance}
 .story em{font-style:normal;color:var(--accent)}
 .intro .sub{color:var(--muted);max-width:52ch;margin-top:1.6rem;font-size:1.1rem}
-.who{text-align:center;padding-block:clamp(3rem,7vw,5.5rem) clamp(4rem,9vw,7rem)}
-h1{font:500 clamp(2.4rem,6.4vw,5.6rem)/.98 var(--d);letter-spacing:-.05em;margin:0 auto;max-width:14ch;text-wrap:balance}
+.who{padding-block:clamp(3rem,7vw,5.5rem) clamp(4rem,9vw,7rem)}
+h1{font:500 clamp(2.4rem,6.4vw,5.6rem)/.98 var(--d);letter-spacing:-.05em;margin:0;max-width:14ch;text-wrap:balance}
 h1 em{font-style:normal;color:var(--accent)}
-/* logos soltos, centralizados e com transparência; acendem ao passar o mouse */
-.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(1.6rem,4vw,3.5rem) clamp(2rem,6vw,5rem);max-width:980px;margin:clamp(2.5rem,6vw,4rem) auto 0}
+/* logos soltos, alinhados à esquerda com o texto, e com transparência; acendem ao passar o mouse */
+.logos{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:clamp(1.6rem,4vw,3.5rem) clamp(2rem,6vw,5rem);max-width:980px;margin:clamp(2.5rem,6vw,4rem) 0 0}
 .lg{display:grid;place-items:center;height:clamp(2.4rem,4vw,3.4rem);opacity:.32;transition:opacity .4s,transform .5s var(--spring);animation:float 6s ease-in-out infinite;animation-delay:calc(var(--n,0)*-.7s)}
 .lg:hover{opacity:1;transform:scale(1.08)}
 .js .lg[data-rv].in{opacity:.32}
