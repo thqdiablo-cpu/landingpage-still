@@ -24,6 +24,16 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
 
 Página **Nossa história** em `historia/index.html` (/historia): texto curto da história e chamada para a proposta.
 
+## Idiomas, tema e acessibilidade
+Arquivos compartilhados pelas três páginas: `assets/site.js` e `assets/site.css`.
+- **Idiomas**: português (padrão), inglês e espanhol. Na primeira visita o site segue o idioma do navegador;
+  a escolha no botão PT/EN/ES fica salva. Para traduzir um texto novo, adicione uma linha no `DICT` de
+  `assets/site.js`: `"texto em português": ["English", "Español"]`. Os cases também são traduzidos por ali.
+- **Tema claro/escuro**: segue o sistema na primeira visita; o botão de sol/lua troca e salva a escolha.
+- **Acessibilidade**: link "Pular para o conteúdo", foco visível, botão para pausar a animação da abertura,
+  painel com tamanho do texto (A, A+, A++), "Pausar animações" e "Destacar links", respeito a
+  `prefers-reduced-motion`, navegação por teclado nos cases e VLibras (Libras) carregado em português.
+
 ## Versão B (teste)
 `versao-b/index.html` (/versao-b) é uma alternativa no formato de página de conversão, guardada para comparação.
 Está marcada com `noindex`.

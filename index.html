@@ -12,18 +12,23 @@
 <meta name="description" content="Branding e identidade visual, social media e motion design. A STILL STUDIO conecta estratégia, criatividade e design.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<script>document.documentElement.className+=" js"</script>
+<script>(function(d){try{var s=localStorage;["theme","fs","motion","links"].forEach(function(k){var v=s.getItem("still-"+k);if(v)d.setAttribute("data-"+k,v)})}catch(e){}d.className+=" js"})(document.documentElement)</script>
+<link rel="stylesheet" href="/assets/site.css">
 <style>
 /* Layout: página clara com cartões escuros arredondados; a abertura é só o logo (quadrado, círculo e U)
    brincando com as três cores da marca: vermelho, preto e branco. */
 :root{
- --bg:#F2F2F0;--surface:#FFFFFF;--ink:#050707;--muted:rgba(5,7,7,.58);--line:rgba(5,7,7,.12);
+ --bg:#F2F2F0;--surface:#FFFFFF;--ink:#050707;--muted:rgba(5,7,7,.64);--line:rgba(5,7,7,.12);--dim:rgba(5,7,7,.2);--bar:rgba(242,242,240,.88);
+ --light:#F2F2F0;--black:#050707;--paper-ink:#050707;
  --dark:#050707;--dark-2:#15181A;--on-dark:#FFFFFF;--muted-d:rgba(255,255,255,.62);--line-d:rgba(255,255,255,.14);
  --accent:#EE2945;--paper:#EEECE8;
  --d:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--b:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
  --ease:cubic-bezier(.2,.8,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
  --hd:-1.8s;--gut:clamp(8px,1.1vw,14px);--rad:clamp(20px,2.4vw,32px);
  color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+/* modo escuro: segue o sistema, ou a escolha salva no botão do menu */
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D0E;--surface:#16191B;--ink:#F2F2F0;--muted:rgba(242,242,240,.66);--line:rgba(242,242,240,.14);--dim:rgba(242,242,240,.2);--bar:rgba(11,13,14,.88);--dark:#16191B;--dark-2:#202427;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B0D0E;--surface:#16191B;--ink:#F2F2F0;--muted:rgba(242,242,240,.66);--line:rgba(242,242,240,.14);--dim:rgba(242,242,240,.2);--bar:rgba(11,13,14,.88);--dark:#16191B;--dark-2:#202427;color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:5.5rem}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--b);-webkit-font-smoothing:antialiased;overflow-x:clip}
@@ -36,7 +41,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .dot{color:var(--accent)}
 .tag{display:inline-flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:500;margin-bottom:1.3rem}
 .tag::before{content:"";width:.8rem;height:.8rem;border-radius:2px;background:var(--accent)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;white-space:nowrap;font:600 .95rem var(--b);padding:.85rem 1.4rem;border-radius:999px;text-decoration:none;border:0;cursor:pointer;background:var(--on-dark);color:var(--ink);transition:transform .3s var(--spring),box-shadow .3s,background .3s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;white-space:nowrap;font:600 .95rem var(--b);padding:.85rem 1.4rem;border-radius:999px;text-decoration:none;border:0;cursor:pointer;background:var(--on-dark);color:var(--black);transition:transform .3s var(--spring),box-shadow .3s,background .3s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(0,0,0,.5)}
 .btn.red{background:var(--accent);color:var(--on-dark)}
 .btn .ar{display:inline-block;transition:transform .3s var(--spring)}.btn:hover .ar{transform:translate(2px,-2px)}
@@ -61,7 +66,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .hero{margin:var(--gut);border-radius:var(--rad);overflow:hidden;position:relative;isolation:isolate;height:min(94svh,940px);min-height:520px;padding:0;color:var(--on-dark);background:var(--dark)}
 .hero .lay{position:absolute;inset:0;clip-path:circle(0% at 50% 52%)}
 .hero .l-red{background:var(--accent);animation:lRed 12s infinite;animation-delay:var(--hd)}
-.hero .l-lt{background:var(--bg);animation:lLt 12s infinite;animation-delay:var(--hd)}
+.hero .l-lt{background:var(--light);animation:lLt 12s infinite;animation-delay:var(--hd)}
 .hero .l-dk{background:var(--dark);animation:lDk 12s infinite;animation-delay:var(--hd)}
 @keyframes lRed{0%,30%{clip-path:circle(0% at 50% 52%)}38%,99.5%{clip-path:circle(150% at 50% 52%)}100%{clip-path:circle(0% at 50% 52%)}}
 @keyframes lLt{0%,55%{clip-path:circle(0% at 50% 52%)}63%,99.5%{clip-path:circle(150% at 50% 52%)}100%{clip-path:circle(0% at 50% 52%)}}
@@ -120,13 +125,22 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
  94%{transform:none;animation-timing-function:cubic-bezier(.6,-.4,.7,.4)}
  100%{transform:translateY(160%)}}
 .hero .cap{position:absolute;z-index:3;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:1rem;padding-block:clamp(1rem,2.4vw,1.6rem);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;animation:navc 12s infinite;animation-delay:var(--hd)}
-@media(max-width:600px){.hero .cap span:last-child{display:none}}
+@media(max-width:600px){.hero .cap>span:last-child{display:none}}
+.hp{display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1.5px solid currentColor;border-radius:999px;color:inherit;font:600 .72rem/1 var(--b);letter-spacing:.14em;text-transform:uppercase;padding:.45rem .8rem;cursor:pointer;opacity:.85}
+.hp:hover{opacity:1}.hp svg{width:.7rem;height:.7rem;fill:currentColor}.hp .pl{display:none}.hero.paused .hp .pa{display:none}.hero.paused .hp .pl{display:block}
+.hero.paused,.hero.paused *{animation-play-state:paused!important}
+.hr{display:flex;align-items:center;gap:.5rem}
+.hp{white-space:nowrap}
+@media(max-width:600px){.hp span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.hp{padding:.55rem}}
+@media(max-width:560px){.fnav .btn .tx{display:none}.fnav .btn{padding:.6rem .8rem}.fnav .lo{margin-right:.3rem}}
+@media(max-width:520px){.hnav .btn{display:none}}
 
 /* ===== quem somos ===== */
+.who:focus{outline:none}
 .who .w{display:grid;gap:2rem;align-items:end}
 @media(min-width:900px){.who .w{grid-template-columns:1fr auto;gap:4rem}}
 .who p.big-t{font:500 clamp(2rem,4.8vw,4.1rem)/1.06 var(--d);letter-spacing:-.04em;max-width:21ch}
-.js .who .wo{color:rgba(5,7,7,.2);transition:color .35s}
+.js .who .wo{color:var(--dim);transition:color .35s}
 .js .who .wo.lit{color:var(--ink)}
 .js .who .wo.hl.lit{color:var(--accent)}
 .more{display:inline-flex;align-items:center;gap:.7rem;font:600 1.05rem var(--d);letter-spacing:-.01em;text-transform:uppercase;text-decoration:none;padding-bottom:.6rem;background:linear-gradient(90deg,var(--accent) 50%,transparent 0) 0 100%/8px 1.5px repeat-x;white-space:nowrap}
@@ -147,12 +161,12 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .hs-h{display:flex;justify-content:space-between;align-items:end;gap:1rem 2rem;flex-wrap:wrap}
 .hs-h h2{font-size:clamp(2.4rem,6.4vw,5.6rem);font-weight:500;letter-spacing:-.045em;max-width:14ch}
 .hs-h .sub{display:inline-flex;align-items:center;gap:.6rem;margin-top:1rem;font:500 clamp(1.05rem,1.6vw,1.3rem) var(--b);color:var(--muted);text-decoration:none}
-.hs-h .sub i{font-style:normal;display:grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--ink);color:var(--on-dark);font-size:.85rem;transition:transform .4s var(--spring)}
+.hs-h .sub i{font-style:normal;display:grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--ink);color:var(--bg);font-size:.85rem;transition:transform .4s var(--spring)}
 .hs-h .sub:hover{color:var(--ink)}.hs-h .sub:hover i{transform:rotate(-45deg)}
 .count{font:500 .95rem var(--b);color:var(--muted);font-variant-numeric:tabular-nums}.count b{color:var(--ink);font-weight:600}
 .track{display:flex;gap:clamp(.8rem,1.4vw,1.2rem);padding-left:max(clamp(1.25rem,4vw,3rem),calc((100vw - 1240px)/2 + 3rem));width:max-content;will-change:transform}
 .pc{margin:0;flex:none;width:clamp(240px,24vw,360px)}
-.front{position:relative;display:block;width:100%;aspect-ratio:3/4;max-height:58svh;border-radius:22px;overflow:hidden;padding:0;border:0;cursor:pointer;text-align:left;font:inherit;color:var(--ink);
+.front{position:relative;display:block;width:100%;aspect-ratio:3/4;max-height:58svh;border-radius:22px;overflow:hidden;padding:0;border:0;cursor:pointer;text-align:left;font:inherit;color:var(--paper-ink);
  background:radial-gradient(circle,rgba(5,7,7,.13) 1px,transparent 1.2px) 0 0/18px 18px,var(--paper)}
 .pc.dk .front{color:var(--on-dark);background:radial-gradient(circle,rgba(255,255,255,.1) 1px,transparent 1.2px) 0 0/18px 18px,var(--dark-2)}
 .front svg{position:absolute;inset:0 0 18% 0;width:100%;height:82%;transition:transform .8s var(--spring)}
@@ -171,13 +185,14 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .together .w{display:grid;gap:2rem;align-items:center;padding-block:clamp(3.5rem,8vw,6rem)}
 @media(min-width:860px){.together .w{grid-template-columns:1fr auto;gap:4rem}}
 .together h2{font-size:clamp(2.6rem,6.6vw,6rem);font-weight:500;letter-spacing:-.045em;max-width:13ch}
-.together h2 em{font-style:normal;color:var(--ink)}
+.together h2 em{font-style:normal;color:var(--black)}
+.together :focus-visible{outline-color:#fff}
 .together p{margin-top:1.2rem;max-width:40ch;opacity:.85}
 .ring{position:relative;display:grid;place-items:center;width:clamp(11rem,20vw,15rem);aspect-ratio:1;text-decoration:none;color:var(--on-dark);justify-self:start}
 .ring svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 16s linear infinite}
 .ring text{font:600 13px var(--b);letter-spacing:.32em;text-transform:uppercase;fill:currentColor}
-.ring span{display:grid;place-items:center;width:52%;aspect-ratio:1;border-radius:50%;background:var(--ink);font:600 2rem/1 var(--b);transition:transform .5s var(--spring),background .3s}
-.ring:hover span{transform:scale(1.12) rotate(-45deg);background:var(--on-dark);color:var(--ink)}
+.ring span{display:grid;place-items:center;width:52%;aspect-ratio:1;border-radius:50%;background:var(--black);font:600 2rem/1 var(--b);transition:transform .5s var(--spring),background .3s}
+.ring:hover span{transform:scale(1.12) rotate(-45deg);background:var(--on-dark);color:var(--black)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ===== serviços: palavras grandes andando para o lado ===== */
@@ -229,7 +244,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .opt[aria-pressed=true] small{color:rgba(255,255,255,.85)}
 .go{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2rem}
 .mag{position:relative;display:grid;place-items:center;align-content:center;gap:.4rem;width:clamp(9rem,15vw,12rem);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-dark);text-decoration:none;text-align:center;font:600 1.05rem/1.2 var(--b);padding:1rem;transform:translate(var(--bx,0px),var(--by,0px));transition:transform .35s var(--ease),background .3s;box-shadow:0 0 0 0 rgba(238,41,69,.5);animation:beat 2.4s ease-in-out infinite}
-.mag:hover{background:var(--on-dark);color:var(--ink);animation:none}
+.mag:hover{background:var(--on-dark);color:var(--black);animation:none}
 .mag b{display:block;font-size:1.6rem;margin-top:.2rem}
 @keyframes beat{0%{box-shadow:0 0 0 0 rgba(238,41,69,.55)}70%{box-shadow:0 0 0 28px rgba(238,41,69,0)}100%{box-shadow:0 0 0 0 rgba(238,41,69,0)}}
 .go p{color:var(--muted-d);max-width:30ch}
@@ -256,7 +271,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .case{position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;
  clip-path:inset(var(--ct,40%) var(--cr,40%) var(--cb,40%) var(--cl,40%) round 22px);transition:clip-path .75s cubic-bezier(.7,0,.2,1)}
 .case.full{clip-path:inset(0 0 0 0 round 0px)}
-.case-bar{position:sticky;top:0;z-index:2;background:rgba(242,242,240,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.case-bar{position:sticky;top:0;z-index:2;background:var(--bar);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
 .case-bar .w{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4.4rem}
 .case-bar .cat{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .case-bar .cat b{color:var(--accent);font-weight:600}
@@ -264,7 +279,7 @@ section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
 .cx:hover{border-color:var(--accent)}.cx i{font-style:normal;font-size:1.2rem;line-height:1;transition:transform .35s var(--spring)}.cx:hover i{transform:rotate(90deg)}
 .case-hero{display:grid;gap:clamp(1.5rem,4vw,3.5rem);padding-block:clamp(2rem,5vw,4rem);align-items:center}
 @media(min-width:900px){.case-hero{grid-template-columns:1.1fr .9fr}}
-.paper{color:var(--ink);border-radius:22px;overflow:hidden;background:radial-gradient(circle,rgba(12,16,20,.13) 1px,transparent 1.2px) 0 0/18px 18px,var(--paper);box-shadow:inset 0 0 0 1px rgba(12,16,20,.08)}
+.paper{color:var(--paper-ink);border-radius:22px;overflow:hidden;background:radial-gradient(circle,rgba(12,16,20,.13) 1px,transparent 1.2px) 0 0/18px 18px,var(--paper);box-shadow:inset 0 0 0 1px rgba(12,16,20,.08)}
 .paper svg{display:block;width:100%;height:auto}
 .case h2{font-size:clamp(2.2rem,5.4vw,4.2rem);text-wrap:balance}
 .case .intro{color:var(--muted);font-size:clamp(1.05rem,1.8vw,1.25rem);margin-top:1.2rem;max-width:42ch}
@@ -309,6 +324,7 @@ body.lock{overflow:hidden}
 </style>
 </head>
 <body>
+<a class="skip" href="#quem-somos">Pular para o conteúdo</a>
 <div class="prog" aria-hidden="true"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -317,13 +333,13 @@ body.lock{overflow:hidden}
 <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#EE2945" stroke-width="3"/></pattern>
 </defs></svg>
 
-<div class="fnav" id="fnav"><a class="lo" href="#topo" aria-label="STILL STUDIO, início"><svg class="mk" viewBox="0 0 996.64 337.44" aria-hidden="true"><use href="#still"/></svg></a><nav aria-label="Seções"><a href="#portfolio">Portfólio</a><a href="#servicos">Serviços</a><a href="/historia/">Nossa história</a><a href="#contato">Contato</a></nav><a class="btn red" href="/proposta">Solicitar proposta <span class="ar">↗</span></a></div>
+<div class="fnav" id="fnav"><a class="lo" href="#topo" aria-label="STILL STUDIO, início"><svg class="mk" viewBox="0 0 996.64 337.44" aria-hidden="true"><use href="#still"/></svg></a><nav aria-label="Seções"><a href="#portfolio">Portfólio</a><a href="#servicos">Serviços</a><a href="/historia/">Nossa história</a><a href="#contato">Contato</a></nav><div data-ctl></div><a class="btn red" href="/proposta" aria-label="Solicitar proposta"><span class="tx">Solicitar proposta</span> <span class="ar" aria-hidden="true">↗</span></a></div>
 
 <main id="topo">
 <header class="hero" id="hero">
   <h1 class="sr">STILL STUDIO, estúdio criativo</h1>
   <span class="lay l-red" aria-hidden="true"></span><span class="lay l-lt" aria-hidden="true"></span><span class="lay l-dk" aria-hidden="true"></span>
-  <div class="w hnav"><a class="lo" href="#topo" aria-label="STILL STUDIO, início"><svg class="mk" viewBox="0 0 996.64 337.44" aria-hidden="true"><use href="#still"/></svg></a><nav aria-label="Principal"><a href="#portfolio">Portfólio</a><a href="#servicos">Serviços</a><a href="/historia/">Nossa história</a><a href="#contato">Contato</a></nav><a class="btn" href="/proposta">Solicitar proposta <span class="ar">↗</span></a></div>
+  <div class="w hnav"><a class="lo" href="#topo" aria-label="STILL STUDIO, início"><svg class="mk" viewBox="0 0 996.64 337.44" aria-hidden="true"><use href="#still"/></svg></a><nav aria-label="Principal"><a href="#portfolio">Portfólio</a><a href="#servicos">Serviços</a><a href="/historia/">Nossa história</a><a href="#contato">Contato</a></nav><div class="hr"><div data-ctl></div><a class="btn" href="/proposta">Solicitar proposta <span class="ar">↗</span></a></div></div>
   <div class="stage" aria-hidden="true">
     <svg class="logo-anim" id="logoAnim" viewBox="-60 -60 1117 458">
       <g class="p" style="--f:-.6"><rect class="s s-sq" x="0" y=".6" width="332.3" height="336.8"/></g>
@@ -331,12 +347,12 @@ body.lock{overflow:hidden}
       <g class="p" style="--f:-1.2"><path class="s s-u" d="M664.4 .4H996.6V171.1A166.1 166.1 0 0 1 664.4 171.1Z"/></g>
     </svg>
   </div>
-  <div class="w cap" aria-hidden="true"><span>Estúdio criativo</span><span>Branding · Social media · Motion</span></div>
+  <div class="w cap"><span>Estúdio criativo</span><button class="hp" type="button" id="heroPause" aria-pressed="false"><svg class="pa" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0h3v10H1zM6 0h3v10H6z"/></svg><svg class="pl" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0l9 5-9 5z"/></svg><span id="heroPauseTxt">Pausar animação</span></button><span>Branding · Social media · Motion</span></div>
 </header>
 
-<section class="who" id="quem-somos"><div class="w">
+<section class="who" id="quem-somos" tabindex="-1"><div class="w">
   <div><span class="tag" data-rv>Quem somos</span>
-  <p class="big-t" id="mfText" data-hl="entendida,lembrada.">Uma marca bonita chama atenção. Uma marca bem pensada é entendida, escolhida e lembrada.</p></div>
+  <p class="big-t" id="mfText" data-hl="entendida|lembrada">Uma marca bonita chama atenção. Uma marca bem pensada é entendida, escolhida e lembrada.</p></div>
   <a class="more" href="/historia/" data-rv><i>→</i> Nossa história</a>
 </div></section>
 
@@ -470,9 +486,11 @@ body.lock{overflow:hidden}
   <div class="w" id="caseBody"></div>
 </div>
 
+<script src="/assets/site.js"></script>
 <script>
 (function(){
- var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches,fine=matchMedia("(hover:hover) and (pointer:fine)").matches;
+ var T=(window.STILL&&window.STILL.T)||function(s){return s},TR=(window.STILL&&window.STILL.translate)||function(){};
+ var reduce=document.documentElement.getAttribute("data-motion")==="off"||matchMedia("(prefers-reduced-motion:reduce)").matches,fine=matchMedia("(hover:hover) and (pointer:fine)").matches;
  var $=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
  var clamp=function(v){return Math.min(1,Math.max(0,v))};
 
@@ -502,8 +520,8 @@ body.lock{overflow:hidden}
 
  /* quem somos: palavras acendem conforme a rolagem */
  var mf=document.getElementById("mfText"),mfw=[];
- var hl=(mf.dataset.hl||"").split(","),txt=mf.textContent;mf.setAttribute("aria-label",txt);mf.innerHTML="";
- txt.split(" ").forEach(function(t,i){var s=document.createElement("span");s.className="wo"+(hl.indexOf(t)>-1?" hl":"");s.textContent=t;s.setAttribute("aria-hidden","true");if(i)mf.appendChild(document.createTextNode(" "));mf.appendChild(s);mfw.push(s)});
+ var clean=function(w){return w.toLowerCase().replace(/[.,!?¡¿:;]/g,"")},hl=(mf.dataset.hl||"").split("|").map(clean),txt=mf.textContent;mf.setAttribute("aria-label",txt);mf.innerHTML="";
+ txt.split(" ").forEach(function(t,i){var s=document.createElement("span");s.className="wo"+(hl.indexOf(clean(t))>-1?" hl":"");s.textContent=t;s.setAttribute("aria-hidden","true");if(i)mf.appendChild(document.createTextNode(" "));mf.appendChild(s);mfw.push(s)});
 
  /* revelar ao entrar na tela */
  function stagger(){var g=new Map();$("[data-rv]").forEach(function(el){var p=el.parentNode,n=g.get(p)||0;g.set(p,n+1);el.style.setProperty("--dl",Math.min(n,8)*0.09+"s")})}
@@ -554,8 +572,8 @@ body.lock{overflow:hidden}
  var mag=document.getElementById("mag"),magTxt=document.getElementById("magTxt"),goTxt=document.getElementById("goTxt"),opts=$("#opts .opt");
  var NAMES={branding:"branding",social:"social media",motion:"motion design",outro:"o seu projeto"};
  opts.forEach(function(o){o.addEventListener("click",function(){var on=o.getAttribute("aria-pressed")!=="true";opts.forEach(function(x){x.setAttribute("aria-pressed","false")});o.setAttribute("aria-pressed",on);
-  if(on){mag.href="/proposta?servico="+o.dataset.v;magTxt.textContent="Falar sobre "+NAMES[o.dataset.v];goTxt.innerHTML="Perfeito. O formulário já abre com <b>"+NAMES[o.dataset.v]+"</b> marcado."}
-  else{mag.href="/proposta";magTxt.textContent="Vamos conversar";goTxt.innerHTML="Escolha o que você precisa e <b>a gente já começa a conversa com isso em mente.</b>"}
+  if(on){mag.href="/proposta?servico="+o.dataset.v;magTxt.textContent=T("Falar sobre")+" "+T(NAMES[o.dataset.v]);goTxt.innerHTML=T("Perfeito. O formulário já abre com")+" <b>"+T(NAMES[o.dataset.v])+"</b> "+T("marcado.")}
+  else{mag.href="/proposta";magTxt.textContent=T("Vamos conversar");goTxt.innerHTML=T("Escolha o que você precisa e")+" <b>"+T("a gente já começa a conversa com isso em mente.")+"</b>"}
   if(!reduce)mag.animate([{transform:"scale(1)"},{transform:"scale(1.12)"},{transform:"scale(1)"}],{duration:450,easing:"cubic-bezier(.34,1.56,.64,1)"})})});
  if(fine&&!reduce){var go=mag.parentNode;
   go.addEventListener("mousemove",function(e){var r=mag.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),d=Math.hypot(dx,dy);if(d<r.width*1.1){mag.style.setProperty("--bx",dx*.3+"px");mag.style.setProperty("--by",dy*.3+"px")}else{mag.style.setProperty("--bx","0px");mag.style.setProperty("--by","0px")}});
@@ -633,6 +651,7 @@ body.lock{overflow:hidden}
    '<div class="story"><div'+ci()+'><h3>O desafio</h3><p>'+c.challenge+'</p></div><div'+ci()+'><h3>Como resolvemos</h3><p>'+c.approach+'</p></div></div>'+
    '<div class="gal">'+c.gal.map(function(g){return '<figure'+ci()+'>'+PAPER(g[1])+'<figcaption>'+g[0]+'</figcaption></figure>'}).join("")+'</div>'+
    '<div class="case-end"><button class="nx" type="button" data-next><small>Próximo projeto</small><b>'+CASES[(i+1)%CASES.length].title+' →</b></button><a class="btn red" href="/proposta">Quero um projeto assim <span class="ar">↗</span></a></div>';
+  TR(cbody);
   cbody.querySelector("[data-next]").addEventListener("click",function(){swap((i+1)%CASES.length)});
  }
  function setRect(i){
@@ -656,6 +675,12 @@ body.lock{overflow:hidden}
   setTimeout(function(){cur=i;fill(i);cs.scrollTop=0;cs.offsetWidth;cs.classList.add("in");cclose.focus({preventScroll:true})},reduce?0:350);
  }
  fronts.forEach(function(f){f.addEventListener("click",function(){open(+f.dataset.case)})});
+ /* teclado: ao focar um quadro, a página rola até a faixa mostrar esse quadro */
+ fronts.forEach(function(f,k){f.addEventListener("focus",function(){if(reduce||cur>-1)return;var top=hs.getBoundingClientRect().top+scrollY,span=hs.offsetHeight-innerHeight;scrollTo({top:top+span*(k/(fronts.length-1)),behavior:"auto"})})});
+ /* pausar/retomar a animação da abertura */
+ var hpB=document.getElementById("heroPause"),hpT=document.getElementById("heroPauseTxt");
+ hpB.addEventListener("click",function(){var p=!hero.classList.contains("paused");hero.classList.toggle("paused",p);hpB.setAttribute("aria-pressed",p);hpT.textContent=T(p?"Retomar animação":"Pausar animação")});
+ if(reduce)hpB.hidden=true;
  cclose.addEventListener("click",close);
  addEventListener("keydown",function(e){
   if(cur<0)return;

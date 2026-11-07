@@ -12,10 +12,14 @@
 <meta name="description" content="Conte sobre o seu projeto e solicite uma proposta da STILL STUDIO.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(d){try{var s=localStorage;["theme","fs","motion","links"].forEach(function(k){var v=s.getItem("still-"+k);if(v)d.setAttribute("data-"+k,v)})}catch(e){}d.className+=" js"})(document.documentElement)</script>
+<link rel="stylesheet" href="/assets/site.css">
 <style>
-:root{--bg:#0C1014;--alt:#181818;--card:#25292E;--ink:#FEFEFE;--accent:#E53242;--muted:rgba(254,254,254,.66);--line:rgba(254,254,254,.14);
+:root{--bg:#F2F2F0;--alt:#F7F7F5;--card:#FFFFFF;--ink:#050707;--accent:#EE2945;--muted:rgba(5,7,7,.64);--line:rgba(5,7,7,.14);--err:#C8102E;--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23050707' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");--b2c:#F6B9C2;
 --d:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--b:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D0E;--alt:#181A1C;--card:#16191B;--ink:#F2F2F0;--muted:rgba(242,242,240,.66);--line:rgba(242,242,240,.14);--err:#FF6B79;--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23F2F2F0' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");--b2c:#7A1A28;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B0D0E;--alt:#181A1C;--card:#16191B;--ink:#F2F2F0;--muted:rgba(242,242,240,.66);--line:rgba(242,242,240,.14);--err:#FF6B79;--arrow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23F2F2F0' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");--b2c:#7A1A28;color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--b);-webkit-font-smoothing:antialiased;min-height:100svh}
 a{color:inherit}p{margin:0}
@@ -26,11 +30,13 @@ h1,h2{font-family:var(--d);font-weight:800;letter-spacing:-.025em;line-height:1.
 .bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
 .bl{position:absolute;border-radius:50%;filter:blur(90px)}
 .b1{width:46vw;height:46vw;background:var(--accent);opacity:.28;left:-12vw;top:-14vw;animation:fl1 16s ease-in-out infinite alternate}
-.b2{width:36vw;height:36vw;background:#7A1A28;opacity:.5;right:-8vw;bottom:-10vw;animation:fl2 20s ease-in-out infinite alternate}
+.b2{width:36vw;height:36vw;background:var(--b2c);opacity:.5;right:-8vw;bottom:-10vw;animation:fl2 20s ease-in-out infinite alternate}
 @keyframes fl1{to{transform:translate(12vw,10vw) scale(1.2)}}
 @keyframes fl2{to{transform:translate(-14vw,-8vw) scale(.85)}}
 .top{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 0}
-.logo{font:800 1.4rem var(--d);letter-spacing:-.03em;text-decoration:none}.logo i{font-style:normal;color:var(--accent)}
+.logo{display:block;color:var(--accent)}.logo svg{display:block;height:1.5rem;width:auto;fill:currentColor}
+.tr{display:flex;align-items:center;gap:.8rem}
+@media(max-width:560px){.back{display:none}}
 .back{font-size:.95rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}.back:hover{color:var(--ink)}
 .grid{display:grid;gap:2.5rem;padding:clamp(1.5rem,4vw,3.5rem) 0 5rem}
 @media(min-width:960px){.grid{grid-template-columns:.8fr 1.2fr;gap:5rem;align-items:start}.intro{position:sticky;top:2rem}}
@@ -57,11 +63,11 @@ h1{font-size:clamp(2.6rem,7vw,5rem)}
 @media(min-width:640px){.fld>label.tl{min-height:3em;display:flex;align-items:flex-end}}
 .fld small{font-weight:400;color:var(--muted)}
 input[type=text],input[type=email],input[type=tel],select,textarea{font:400 1rem var(--b);color:var(--ink);background:var(--alt);border:1.5px solid var(--line);border-radius:12px;padding:.9rem 1rem;width:100%;transition:border-color .2s,box-shadow .2s,transform .2s}
-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23FEFEFE' stroke-width='2'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.6rem}
+select{appearance:none;background-image:var(--arrow);background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.6rem}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(229,50,66,.25)}
 .bad{border-color:var(--accent)!important}
 textarea{min-height:9rem;resize:vertical}
-.err{color:#FF6B79;font-size:.88rem;font-weight:500;min-height:1.1em}
+.err{color:var(--err);font-size:.88rem;font-weight:500;min-height:1.1em}
 .ct{justify-self:end;color:var(--muted);font-size:.82rem}
 .chips{display:grid;gap:.6rem;grid-template-columns:1fr}
 @media(min-width:520px){.chips{grid-template-columns:1fr 1fr}}
@@ -75,12 +81,12 @@ textarea{min-height:9rem;resize:vertical}
 .chip input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
 .hp{position:absolute;left:-9999px;opacity:0}
 .nv{display:flex;justify-content:space-between;gap:1rem;margin-top:2rem}
-.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:var(--ink);font:600 1rem var(--b);padding:.95rem 1.8rem;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font:600 1rem var(--b);padding:.95rem 1.8rem;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .2s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px var(--accent)}
-.btn.ghost{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
 .btn[disabled]{opacity:.55;cursor:wait;transform:none}
 .nv .ghost[hidden-step]{visibility:hidden}
-.fe{color:#FF6B79;font-weight:500;margin-top:1rem;min-height:1.3em}
+.fe{color:var(--err);font-weight:500;margin-top:1rem;min-height:1.3em}
 /* confirmação */
 .done{text-align:center;padding:2rem 0;outline:none}
 .done h2{font-size:clamp(1.9rem,4.5vw,3rem);margin:1.4rem 0 .9rem}
@@ -103,12 +109,13 @@ textarea{min-height:9rem;resize:vertical}
 </style>
 </head>
 <body>
+<a class="skip" href="#f">Pular para o conteúdo</a>
 <div class="bg" aria-hidden="true"><span class="bl b1"></span><span class="bl b2"></span></div>
 <div class="w">
-  <header class="top"><a class="logo" href="/">STILL<i>.</i></a><a class="back" href="/">Voltar ao site</a></header>
+  <header class="top"><a class="logo" href="/" aria-label="STILL STUDIO, voltar para a página inicial"><svg viewBox="461.68 371.28 996.64 337.44" aria-hidden="true"><path d="M 1126.058594 371.679688 L 1126.058594 512.910156 C 1113.21875 432.660156 1043.875 371.277344 960.011719 371.277344 C 876.097656 371.277344 806.726562 432.730469 793.945312 513.046875 L 793.945312 371.890625 L 461.683594 371.890625 L 461.683594 708.679688 L 793.945312 708.679688 L 793.945312 566.953125 C 806.726562 647.269531 876.097656 708.71875 960.011719 708.71875 C 1046.203125 708.71875 1117.152344 643.917969 1127.078125 560.398438 C 1136.085938 643.648438 1206.542969 708.46875 1292.1875 708.46875 C 1383.9375 708.46875 1458.316406 634.089844 1458.316406 542.339844 L 1458.316406 371.679688 Z"/></svg></a><div class="tr"><div data-ctl></div><a class="back" href="/">Voltar ao site</a></div></header>
   <main class="grid">
     <div class="intro">
-      <h1 aria-label="Solicite uma proposta."><span class="wd" style="--i:0"><span>Solicite</span></span> <span class="wd" style="--i:1"><span>uma</span></span> <span class="wd" style="--i:2"><span>proposta<span class=dot>.</span></span></span></h1>
+      <h1 aria-label="Solicite uma proposta." data-ih="@h1prop"><span class="wd" style="--i:0"><span>Solicite</span></span> <span class="wd" style="--i:1"><span>uma</span></span> <span class="wd" style="--i:2"><span>proposta<span class=dot>.</span></span></span></h1>
       <p>Conte sobre o seu projeto em três etapas rápidas. Com base nas suas respostas, nossa equipe entra em contato com os próximos passos.</p>
     </div>
     <section class="card" aria-label="Formulário de proposta">
@@ -165,22 +172,24 @@ textarea{min-height:9rem;resize:vertical}
     </section>
   </main>
 </div>
+<script src="/assets/site.js"></script>
 <script>
 // URL do serviço que recebe as propostas (POST em JSON). Sem ela, o envio falha e nenhuma tela de sucesso é exibida.
 var FORM_ENDPOINT="";
 (function(){
- var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ var T=(window.STILL&&window.STILL.T)||function(x){return x};
+ var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches||document.documentElement.getAttribute("data-motion")==="off";
  var f=document.getElementById("f"),steps=[].slice.call(f.querySelectorAll(".step")),cur=0,busy=false,sending=false;
  var lis=[].slice.call(document.querySelectorAll(".pn li")),fill=document.getElementById("fill"),cnt=document.getElementById("cnt");
  var prev=document.getElementById("prev"),next=document.getElementById("next"),fe=document.getElementById("fe");
  var req=function(m){return function(v){return !!v||m}};
  var V={
-  nome:function(v){return v.length>=3||"Informe seu nome completo."},
-  email:function(v){return /^\S+@\S+\.\S+$/.test(v)||"Informe um e-mail válido."},
-  whats:function(v){var d=v.replace(/\D/g,"");if(d.indexOf("55")===0&&d.length>11)d=d.slice(2);return d.length===10||d.length===11||"Informe um WhatsApp válido com DDD."},
-  empresa:req("Informe o nome da empresa ou do projeto."),porte:req("Selecione o tamanho da equipe."),oferta:req("Conte quais produtos ou serviços vocês oferecem."),
-  prazo:req("Selecione o prazo desejado."),origem:req("Conte como nos conheceu."),
-  desafio:function(v){return v.length>=20||"Descreva o projeto com pelo menos 20 caracteres."}
+  nome:function(v){return v.length>=3||T("Informe seu nome completo.")},
+  email:function(v){return /^\S+@\S+\.\S+$/.test(v)||T("Informe um e-mail válido.")},
+  whats:function(v){var d=v.replace(/\D/g,"");if(d.indexOf("55")===0&&d.length>11)d=d.slice(2);return d.length===10||d.length===11||T("Informe um WhatsApp válido com DDD.")},
+  empresa:req(T("Informe o nome da empresa ou do projeto.")),porte:req(T("Selecione o tamanho da equipe.")),oferta:req(T("Conte quais produtos ou serviços vocês oferecem.")),
+  prazo:req(T("Selecione o prazo desejado.")),origem:req(T("Conte como nos conheceu.")),
+  desafio:function(v){return v.length>=20||T("Descreva o projeto com pelo menos 20 caracteres.")}
  };
  var BY=[["nome","email","whats"],["empresa","porte","oferta"],["servico","prazo","origem","desafio"]];
  /* serviço vindo da home (?servico=branding|social|motion|outro) já marcado */
@@ -188,7 +197,7 @@ var FORM_ENDPOINT="";
   if(qs&&SV[qs]){var cb=f.querySelector('[name=servico][value="'+SV[qs]+'"]');if(cb)cb.checked=true}}catch(e){}
  function setErr(n,m){var e=document.getElementById("e-"+n),el=f.elements[n];if(e)e.textContent=m||"";var els=n==="servico"?[]:[el];els.forEach(function(x){if(!x)return;x.classList.toggle("bad",!!m);x.setAttribute("aria-invalid",m?"true":"false");if(m)x.setAttribute("aria-describedby","e-"+n)})}
  function check(n){var m;
-  if(n==="servico"){m=f.querySelectorAll('[name=servico]:checked').length?"":"Escolha pelo menos um serviço."}
+  if(n==="servico"){m=f.querySelectorAll('[name=servico]:checked').length?"":T("Escolha pelo menos um serviço.")}
   else{var r=V[n](f.elements[n].value.trim());m=r===true?"":r}
   setErr(n,m);return !m}
  function validate(i){var first=null;BY[i].forEach(function(n){if(!check(n)&&!first)first=n});
@@ -197,9 +206,9 @@ var FORM_ENDPOINT="";
   return !first}
  function update(){
   lis.forEach(function(li,i){li.classList.toggle("done",i<cur);li.classList.toggle("on",i===cur);i===cur?li.setAttribute("aria-current","step"):li.removeAttribute("aria-current")});
-  fill.style.width=(cur*50)+"%";cnt.textContent="Etapa "+(cur+1)+" de 3";
+  fill.style.width=(cur*50)+"%";cnt.textContent=T("Etapa")+" "+(cur+1)+" "+T("de")+" 3";
   prev.style.visibility=cur===0?"hidden":"visible";prev.tabIndex=cur===0?-1:0;
-  next.textContent=cur===2?"Enviar solicitação":"Continuar"}
+  next.textContent=cur===2?T("Enviar solicitação"):T("Continuar")}
  function stag(el,base){if(reduce)return;[].forEach.call(el.querySelectorAll(".fld"),function(x,i){x.animate([{opacity:0,transform:"translateY(16px)"},{opacity:1,transform:"none"}],{duration:480,delay:base+60+i*70,fill:"backwards",easing:"cubic-bezier(.2,.8,.2,1)"})})}
  stag(steps[0],450);
  if(!reduce&&matchMedia("(pointer:fine)").matches)addEventListener("pointermove",function(e){var s=document.documentElement.style;s.setProperty("--mx",(e.clientX/innerWidth-.5).toFixed(3));s.setProperty("--my",(e.clientY/innerHeight-.5).toFixed(3))},{passive:true});
@@ -235,10 +244,10 @@ var FORM_ENDPOINT="";
   var data={projeto:"STILL STUDIO",enviadoEm:new Date().toISOString()};
   ["nome","email","whats","insta","empresa","porte","oferta","prazo","origem","desafio"].forEach(function(k){data[k]=f.elements[k].value.trim()});
   data.servico=[].map.call(f.querySelectorAll('[name=servico]:checked'),function(c){return c.value}).join(", ");
-  sending=true;next.disabled=true;prev.disabled=true;next.textContent="Enviando...";fe.textContent="";
+  sending=true;next.disabled=true;prev.disabled=true;next.textContent=T("Enviando...");fe.textContent="";
   try{await send(data);
    document.getElementById("prog").hidden=true;f.hidden=true;var d=document.getElementById("done");d.hidden=false;d.focus({preventScroll:true});scrollTo({top:0,behavior:reduce?"auto":"smooth"})}
-  catch(err){console.error("Falha no envio:",err);fe.textContent="Não foi possível enviar sua solicitação agora. Verifique sua conexão e tente novamente."}
+  catch(err){console.error("Falha no envio:",err);fe.textContent=T("Não foi possível enviar sua solicitação agora. Verifique sua conexão e tente novamente.")}
   sending=false;next.disabled=false;prev.disabled=false;update()});
  update();
 })();
