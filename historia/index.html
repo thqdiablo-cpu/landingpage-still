@@ -40,7 +40,8 @@ h1 em{font-style:normal;color:var(--accent)}
 .js .lg[data-rv].in:hover{opacity:1}
 .lg img{height:100%;width:auto;max-width:11rem;object-fit:contain;filter:grayscale(1);transition:filter .4s}
 .lg:hover img{filter:none}
-.lg.ph{font:600 clamp(1rem,1.8vw,1.35rem) var(--d);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.lg.nm{font:600 clamp(1.4rem,2.6vw,2.1rem)/1 var(--d);letter-spacing:-.03em;color:var(--ink);white-space:nowrap}
+.note{margin-top:clamp(2rem,5vw,3rem);color:var(--muted);font-size:.92rem}
 @keyframes float{50%{translate:0 -6px}}
 .cta{margin:0 clamp(8px,1.1vw,14px) clamp(8px,1.1vw,14px);border-radius:clamp(20px,2.4vw,32px);background:var(--dark);color:var(--on-dark)}
 .cta .w{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem;padding-block:clamp(3rem,7vw,5rem)}
@@ -62,9 +63,10 @@ h1 em{font-style:normal;color:var(--accent)}
 </div></section>
 <section class="who"><div class="w">
   <h1 data-rv>Quem faz parte da nossa <em>história</em>.</h1>
-  <!-- LOGOS: troque cada <div class="lg ph" ...>Logo NN</div> por
-       <div class="lg" data-rv style="--n:1"><img src="/logos/nome-do-cliente.svg" alt="Nome do cliente"></div> -->
-  <div class="logos"><div class="lg ph" data-rv style="--n:1">Logo 01</div><div class="lg ph" data-rv style="--n:2">Logo 02</div><div class="lg ph" data-rv style="--n:3">Logo 03</div><div class="lg ph" data-rv style="--n:4">Logo 04</div><div class="lg ph" data-rv style="--n:5">Logo 05</div><div class="lg ph" data-rv style="--n:6">Logo 06</div><div class="lg ph" data-rv style="--n:7">Logo 07</div><div class="lg ph" data-rv style="--n:8">Logo 08</div><div class="lg ph" data-rv style="--n:9">Logo 09</div><div class="lg ph" data-rv style="--n:10">Logo 10</div><div class="lg ph" data-rv style="--n:11">Logo 11</div><div class="lg ph" data-rv style="--n:12">Logo 12</div></div>
+  <!-- LOGOS: os nomes estão em texto até chegarem os arquivos oficiais. Para trocar, use
+       <div class="lg" data-rv style="--n:1"><img src="/logos/hoteis-com.svg" alt="Hotéis.com"></div> -->
+  <div class="logos"><div class="lg nm" data-rv style="--n:1">Hotéis.com</div><div class="lg nm" data-rv style="--n:2">Farmabase</div><div class="lg nm" data-rv style="--n:3">Fini</div><div class="lg nm" data-rv style="--n:4">Arteris</div><div class="lg nm" data-rv style="--n:5">Caterpillar</div><div class="lg nm" data-rv style="--n:6">Honda</div><div class="lg nm" data-rv style="--n:7">Aegea</div></div>
+  <p class="note" data-rv>* Marcas atendidas pela equipe da STILL dentro de uma agência.</p>
 </div></section>
 </main>
 <section class="cta"><div class="w"><h2>Sua marca pode ser a próxima.</h2><a class="btn" href="/proposta">Solicitar proposta ↗</a></div></section>
