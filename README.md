@@ -22,16 +22,7 @@ Site estático (HTML/CSS/JS puro, sem build), baseado na LP de referência da ST
    e o botão leva para `/proposta?servico=...`, que já abre o formulário com o serviço marcado.
 8. **Rodapé**: a palavra STILL em letras grandes vermelhas que sobem ao aparecer.
 
-Página **Nossa história** em `historia/index.html` (/historia): texto curto da história e "Quem faz parte da nossa história", com os clientes.
-
-## Logos de clientes e parceiros
-Ficam na página `historia/index.html`: Hotéis.com, Farmabase, Fini, Arteris, Caterpillar, Honda e Aegea,
-com a nota "* Marcas atendidas pela equipe da STILL dentro de uma agência."
-Por enquanto aparecem como nomes em texto. Para usar os logos oficiais:
-1. Coloque os arquivos na pasta `logos/` (de preferência SVG ou PNG com fundo transparente).
-2. Troque cada `<div class="lg nm" data-rv style="--n:1">Hotéis.com</div>` por
-   `<div class="lg" data-rv style="--n:1"><img src="/logos/hoteis-com.svg" alt="Hotéis.com"></div>`.
-Os logos aparecem em cinza e com transparência, flutuando de leve, e ganham a cor original ao passar o mouse.
+Página **Nossa história** em `historia/index.html` (/historia): texto curto da história e chamada para a proposta.
 
 ## Versão B (teste)
 `versao-b/index.html` (/versao-b) é uma alternativa no formato de página de conversão, guardada para comparação.
